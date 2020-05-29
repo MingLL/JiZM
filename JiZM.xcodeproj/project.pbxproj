@@ -3,19 +3,32 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9BA3596D9EB717870EF039D3 /* Pods_JiZM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D61210D8BDA2030D8AAE12BD /* Pods_JiZM.framework */; };
+		9C934ED02480E68E00F4730A /* category.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C934ECF2480E68E00F4730A /* category.plist */; };
+		9C934ED62480E81100F4730A /* MyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C934ED52480E81100F4730A /* MyLabel.swift */; };
+		9C934ED9248135E100F4730A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C934ED8248135E100F4730A /* DetailViewController.swift */; };
+		9C934EDC2481372E00F4730A /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C934EDB2481372E00F4730A /* DetailView.swift */; };
+		9C934EDE24813A3500F4730A /* ItmeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C934EDD24813A3500F4730A /* ItmeView.swift */; };
 		9C97A0E424809AD800844578 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C97A0E324809AD800844578 /* AppDelegate.swift */; };
 		9C97A0E624809AD800844578 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C97A0E524809AD800844578 /* SceneDelegate.swift */; };
-		9C97A0E824809AD800844578 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C97A0E724809AD800844578 /* ViewController.swift */; };
-		9C97A0EB24809AD800844578 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C97A0E924809AD800844578 /* Main.storyboard */; };
 		9C97A0EE24809AD800844578 /* JiZM.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9C97A0EC24809AD800844578 /* JiZM.xcdatamodeld */; };
 		9C97A0F024809ADA00844578 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C97A0EF24809ADA00844578 /* Assets.xcassets */; };
 		9C97A0F324809ADA00844578 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C97A0F124809ADA00844578 /* LaunchScreen.storyboard */; };
 		9C97A0FE24809ADA00844578 /* JiZMTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C97A0FD24809ADA00844578 /* JiZMTests.swift */; };
 		9C97A10924809ADA00844578 /* JiZMUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C97A10824809ADA00844578 /* JiZMUITests.swift */; };
+		9C97A11C2480A0E300844578 /* FormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C97A11B2480A0E300844578 /* FormViewController.swift */; };
+		9C97A11E2480A0F100844578 /* BillViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C97A11D2480A0F100844578 /* BillViewController.swift */; };
+		9C97A1222480A11200844578 /* MineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C97A1212480A11200844578 /* MineViewController.swift */; };
+		9C97A1252480A12500844578 /* BudgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C97A1242480A12500844578 /* BudgetViewController.swift */; };
+		9C97A12A2480A15300844578 /* MoreFuncViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C97A1292480A15300844578 /* MoreFuncViewController.swift */; };
+		9C97A12C2480CDB200844578 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C97A12B2480CDB200844578 /* ViewController.swift */; };
+		9C97A12E2480DF6D00844578 /* BillItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C97A12D2480DF6D00844578 /* BillItem.swift */; };
+		9C97A1302480E0BD00844578 /* AccountItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C97A12F2480E0BD00844578 /* AccountItem.swift */; };
+		9C97A1332480E2AF00844578 /* ProjectItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C97A1322480E2AF00844578 /* ProjectItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,11 +49,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		79A5B9A72498A364670FCAB1 /* Pods-JiZM.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JiZM.release.xcconfig"; path = "Target Support Files/Pods-JiZM/Pods-JiZM.release.xcconfig"; sourceTree = "<group>"; };
+		9C934ECF2480E68E00F4730A /* category.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = category.plist; sourceTree = "<group>"; };
+		9C934ED52480E81100F4730A /* MyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLabel.swift; sourceTree = "<group>"; };
+		9C934ED8248135E100F4730A /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		9C934EDB2481372E00F4730A /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		9C934EDD24813A3500F4730A /* ItmeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItmeView.swift; sourceTree = "<group>"; };
 		9C97A0E024809AD800844578 /* JiZM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JiZM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C97A0E324809AD800844578 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9C97A0E524809AD800844578 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		9C97A0E724809AD800844578 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		9C97A0EA24809AD800844578 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9C97A0ED24809AD800844578 /* JiZM.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = JiZM.xcdatamodel; sourceTree = "<group>"; };
 		9C97A0EF24809ADA00844578 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9C97A0F224809ADA00844578 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +68,17 @@
 		9C97A10424809ADA00844578 /* JiZMUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JiZMUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C97A10824809ADA00844578 /* JiZMUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JiZMUITests.swift; sourceTree = "<group>"; };
 		9C97A10A24809ADA00844578 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9C97A11B2480A0E300844578 /* FormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewController.swift; sourceTree = "<group>"; };
+		9C97A11D2480A0F100844578 /* BillViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillViewController.swift; sourceTree = "<group>"; };
+		9C97A1212480A11200844578 /* MineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineViewController.swift; sourceTree = "<group>"; };
+		9C97A1242480A12500844578 /* BudgetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetViewController.swift; sourceTree = "<group>"; };
+		9C97A1292480A15300844578 /* MoreFuncViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreFuncViewController.swift; sourceTree = "<group>"; };
+		9C97A12B2480CDB200844578 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9C97A12D2480DF6D00844578 /* BillItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillItem.swift; sourceTree = "<group>"; };
+		9C97A12F2480E0BD00844578 /* AccountItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountItem.swift; sourceTree = "<group>"; };
+		9C97A1322480E2AF00844578 /* ProjectItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectItem.swift; sourceTree = "<group>"; };
+		D12242FB17D69F30F0CCAF01 /* Pods-JiZM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JiZM.debug.xcconfig"; path = "Target Support Files/Pods-JiZM/Pods-JiZM.debug.xcconfig"; sourceTree = "<group>"; };
+		D61210D8BDA2030D8AAE12BD /* Pods_JiZM.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JiZM.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9BA3596D9EB717870EF039D3 /* Pods_JiZM.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +107,48 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6AF72225FCAF8AC704A8323B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D12242FB17D69F30F0CCAF01 /* Pods-JiZM.debug.xcconfig */,
+				79A5B9A72498A364670FCAB1 /* Pods-JiZM.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		6D6F0CE7E073C4EF7A2DE1D8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D61210D8BDA2030D8AAE12BD /* Pods_JiZM.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9C934ED42480E7CC00F4730A /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				9C934EDD24813A3500F4730A /* ItmeView.swift */,
+				9C934ED52480E81100F4730A /* MyLabel.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		9C934ED72481357400F4730A /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				9C934ED8248135E100F4730A /* DetailViewController.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		9C934EDA2481371C00F4730A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9C934EDB2481372E00F4730A /* DetailView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		9C97A0D724809AD800844578 = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +156,8 @@
 				9C97A0FC24809ADA00844578 /* JiZMTests */,
 				9C97A10724809ADA00844578 /* JiZMUITests */,
 				9C97A0E124809AD800844578 /* Products */,
+				6AF72225FCAF8AC704A8323B /* Pods */,
+				6D6F0CE7E073C4EF7A2DE1D8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,14 +174,21 @@
 		9C97A0E224809AD800844578 /* JiZM */ = {
 			isa = PBXGroup;
 			children = (
+				9C934ED42480E7CC00F4730A /* Component */,
+				9C97A1312480E0CE00844578 /* Model */,
+				9C97A11A2480A0B200844578 /* MoreFuncController */,
+				9C97A1192480A07F00844578 /* FormController */,
+				9C97A1182480A05100844578 /* BudgetController */,
+				9C97A1172480A01200844578 /* MineController */,
+				9C97A11624809F9C00844578 /* BillController */,
 				9C97A0E324809AD800844578 /* AppDelegate.swift */,
 				9C97A0E524809AD800844578 /* SceneDelegate.swift */,
-				9C97A0E724809AD800844578 /* ViewController.swift */,
-				9C97A0E924809AD800844578 /* Main.storyboard */,
 				9C97A0EF24809ADA00844578 /* Assets.xcassets */,
 				9C97A0F124809ADA00844578 /* LaunchScreen.storyboard */,
 				9C97A0F424809ADA00844578 /* Info.plist */,
 				9C97A0EC24809AD800844578 /* JiZM.xcdatamodeld */,
+				9C97A12B2480CDB200844578 /* ViewController.swift */,
+				9C934ECF2480E68E00F4730A /* category.plist */,
 			);
 			path = JiZM;
 			sourceTree = "<group>";
@@ -131,6 +211,98 @@
 			path = JiZMUITests;
 			sourceTree = "<group>";
 		};
+		9C97A11624809F9C00844578 /* BillController */ = {
+			isa = PBXGroup;
+			children = (
+				9C97A11F2480A0F400844578 /* Controller */,
+			);
+			path = BillController;
+			sourceTree = "<group>";
+		};
+		9C97A1172480A01200844578 /* MineController */ = {
+			isa = PBXGroup;
+			children = (
+				9C934EDA2481371C00F4730A /* View */,
+				9C934ED72481357400F4730A /* Detail */,
+				9C97A1202480A10100844578 /* Controller */,
+			);
+			path = MineController;
+			sourceTree = "<group>";
+		};
+		9C97A1182480A05100844578 /* BudgetController */ = {
+			isa = PBXGroup;
+			children = (
+				9C97A1232480A11700844578 /* Controller */,
+			);
+			path = BudgetController;
+			sourceTree = "<group>";
+		};
+		9C97A1192480A07F00844578 /* FormController */ = {
+			isa = PBXGroup;
+			children = (
+				9C97A1262480A12B00844578 /* Controller */,
+			);
+			path = FormController;
+			sourceTree = "<group>";
+		};
+		9C97A11A2480A0B200844578 /* MoreFuncController */ = {
+			isa = PBXGroup;
+			children = (
+				9C97A1282480A14400844578 /* Controller */,
+			);
+			path = MoreFuncController;
+			sourceTree = "<group>";
+		};
+		9C97A11F2480A0F400844578 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9C97A11D2480A0F100844578 /* BillViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		9C97A1202480A10100844578 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9C97A1212480A11200844578 /* MineViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		9C97A1232480A11700844578 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9C97A1242480A12500844578 /* BudgetViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		9C97A1262480A12B00844578 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9C97A11B2480A0E300844578 /* FormViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		9C97A1282480A14400844578 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9C97A1292480A15300844578 /* MoreFuncViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		9C97A1312480E0CE00844578 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9C97A12F2480E0BD00844578 /* AccountItem.swift */,
+				9C97A12D2480DF6D00844578 /* BillItem.swift */,
+				9C97A1322480E2AF00844578 /* ProjectItem.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -138,9 +310,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9C97A10D24809ADA00844578 /* Build configuration list for PBXNativeTarget "JiZM" */;
 			buildPhases = (
+				95C01AA91C2EC432CE56FF9D /* [CP] Check Pods Manifest.lock */,
 				9C97A0DC24809AD800844578 /* Sources */,
 				9C97A0DD24809AD800844578 /* Frameworks */,
 				9C97A0DE24809AD800844578 /* Resources */,
+				455DE72461A2324FDBC13A88 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -235,9 +409,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C934ED02480E68E00F4730A /* category.plist in Resources */,
 				9C97A0F324809ADA00844578 /* LaunchScreen.storyboard in Resources */,
 				9C97A0F024809ADA00844578 /* Assets.xcassets in Resources */,
-				9C97A0EB24809AD800844578 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,15 +431,69 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		455DE72461A2324FDBC13A88 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JiZM/Pods-JiZM-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JiZM/Pods-JiZM-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JiZM/Pods-JiZM-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		95C01AA91C2EC432CE56FF9D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-JiZM-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		9C97A0DC24809AD800844578 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9C97A0E824809AD800844578 /* ViewController.swift in Sources */,
 				9C97A0E424809AD800844578 /* AppDelegate.swift in Sources */,
+				9C97A1332480E2AF00844578 /* ProjectItem.swift in Sources */,
+				9C97A1302480E0BD00844578 /* AccountItem.swift in Sources */,
+				9C934EDE24813A3500F4730A /* ItmeView.swift in Sources */,
+				9C934ED62480E81100F4730A /* MyLabel.swift in Sources */,
+				9C97A1252480A12500844578 /* BudgetViewController.swift in Sources */,
 				9C97A0E624809AD800844578 /* SceneDelegate.swift in Sources */,
+				9C97A12C2480CDB200844578 /* ViewController.swift in Sources */,
+				9C97A11E2480A0F100844578 /* BillViewController.swift in Sources */,
+				9C97A12E2480DF6D00844578 /* BillItem.swift in Sources */,
+				9C97A11C2480A0E300844578 /* FormViewController.swift in Sources */,
+				9C97A12A2480A15300844578 /* MoreFuncViewController.swift in Sources */,
 				9C97A0EE24809AD800844578 /* JiZM.xcdatamodeld in Sources */,
+				9C97A1222480A11200844578 /* MineViewController.swift in Sources */,
+				9C934EDC2481372E00F4730A /* DetailView.swift in Sources */,
+				9C934ED9248135E100F4730A /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,14 +529,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		9C97A0E924809AD800844578 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9C97A0EA24809AD800844578 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		9C97A0F124809ADA00844578 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -436,6 +656,7 @@
 		};
 		9C97A10E24809ADA00844578 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D12242FB17D69F30F0CCAF01 /* Pods-JiZM.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -454,6 +675,7 @@
 		};
 		9C97A10F24809ADA00844578 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 79A5B9A72498A364670FCAB1 /* Pods-JiZM.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

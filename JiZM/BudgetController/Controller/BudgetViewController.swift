@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  BudgetViewController.swift
 //  JiZM
 //
 //  Created by MingL L on 2020/5/29.
@@ -8,12 +8,24 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class BudgetViewController: UIViewController {
+    
+    init() {
+        super.init(nibName: nil, bundle: nil)
+        self.tabBarItem.image = UIImage(systemName: "creditcard", withConfiguration: UIImage.SymbolConfiguration(weight: .regular))
+        self.tabBarItem.title = "项目/预算"
+        self.navigationItem.title = "项目/预算"
+
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.view.backgroundColor = .red
         // Do any additional setup after loading the view.
     }
     

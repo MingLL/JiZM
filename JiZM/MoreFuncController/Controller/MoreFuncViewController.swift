@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MoreFuncViewController.swift
 //  JiZM
 //
 //  Created by MingL L on 2020/5/29.
@@ -8,12 +8,23 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class MoreFuncViewController: UIViewController {
+    
+    init() {
+        super.init(nibName: nil, bundle: nil)
+        self.tabBarItem.image = UIImage(systemName: "slider.horizontal.3", withConfiguration: UIImage.SymbolConfiguration(weight: .regular))
+        self.navigationItem.title = "更多功能"
+        
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.view.backgroundColor = .red
         // Do any additional setup after loading the view.
     }
     

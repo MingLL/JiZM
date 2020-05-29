@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  BillViewController.swift
 //  JiZM
 //
 //  Created by MingL L on 2020/5/29.
@@ -8,15 +8,25 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        self.view.backgroundColor = .red
-        // Do any additional setup after loading the view.
+class BillViewController: UIViewController {
+    
+   
+    init() {
+        super.init(nibName: nil, bundle: nil)
+        self.tabBarItem.title = "记账"
+        self.tabBarItem.image = UIImage(systemName: "plus")
     }
     
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+    }
+    
+
 
     /*
     // MARK: - Navigation
