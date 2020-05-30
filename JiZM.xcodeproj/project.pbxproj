@@ -29,6 +29,8 @@
 		9C97A12E2480DF6D00844578 /* BillItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C97A12D2480DF6D00844578 /* BillItem.swift */; };
 		9C97A1302480E0BD00844578 /* AccountItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C97A12F2480E0BD00844578 /* AccountItem.swift */; };
 		9C97A1332480E2AF00844578 /* ProjectItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C97A1322480E2AF00844578 /* ProjectItem.swift */; };
+		9CF789DB248205E0006423D9 /* ProjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF789DA248205E0006423D9 /* ProjectTableViewCell.swift */; };
+		9CF789DF24824734006423D9 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF789DE24824734006423D9 /* Date.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +79,8 @@
 		9C97A12D2480DF6D00844578 /* BillItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillItem.swift; sourceTree = "<group>"; };
 		9C97A12F2480E0BD00844578 /* AccountItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountItem.swift; sourceTree = "<group>"; };
 		9C97A1322480E2AF00844578 /* ProjectItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectItem.swift; sourceTree = "<group>"; };
+		9CF789DA248205E0006423D9 /* ProjectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectTableViewCell.swift; sourceTree = "<group>"; };
+		9CF789DE24824734006423D9 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		D12242FB17D69F30F0CCAF01 /* Pods-JiZM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JiZM.debug.xcconfig"; path = "Target Support Files/Pods-JiZM/Pods-JiZM.debug.xcconfig"; sourceTree = "<group>"; };
 		D61210D8BDA2030D8AAE12BD /* Pods_JiZM.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JiZM.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -174,6 +178,7 @@
 		9C97A0E224809AD800844578 /* JiZM */ = {
 			isa = PBXGroup;
 			children = (
+				9CF789DD24824725006423D9 /* Util */,
 				9C934ED42480E7CC00F4730A /* Component */,
 				9C97A1312480E0CE00844578 /* Model */,
 				9C97A11A2480A0B200844578 /* MoreFuncController */,
@@ -232,6 +237,7 @@
 		9C97A1182480A05100844578 /* BudgetController */ = {
 			isa = PBXGroup;
 			children = (
+				9CF789DC248205F0006423D9 /* List */,
 				9C97A1232480A11700844578 /* Controller */,
 			);
 			path = BudgetController;
@@ -301,6 +307,22 @@
 				9C97A1322480E2AF00844578 /* ProjectItem.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		9CF789DC248205F0006423D9 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				9CF789DA248205E0006423D9 /* ProjectTableViewCell.swift */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		9CF789DD24824725006423D9 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				9CF789DE24824734006423D9 /* Date.swift */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -484,6 +506,8 @@
 				9C934EDE24813A3500F4730A /* ItmeView.swift in Sources */,
 				9C934ED62480E81100F4730A /* MyLabel.swift in Sources */,
 				9C97A1252480A12500844578 /* BudgetViewController.swift in Sources */,
+				9CF789DB248205E0006423D9 /* ProjectTableViewCell.swift in Sources */,
+				9CF789DF24824734006423D9 /* Date.swift in Sources */,
 				9C97A0E624809AD800844578 /* SceneDelegate.swift in Sources */,
 				9C97A12C2480CDB200844578 /* ViewController.swift in Sources */,
 				9C97A11E2480A0F100844578 /* BillViewController.swift in Sources */,
