@@ -18,7 +18,7 @@ class BillViewController: UIViewController, FSCalendarDelegate,FSCalendarDataSou
     
     var addBillButton: UIButton!
     
-    var billItems: [BillItem] = [BillItem(price: 150.0, name: "午餐", status: "收入", category: "餐饮", account: AccountItem(name: "生活费", category: "线上支付", initialAmount: 1500.0, isShowTotalAmount: true, describe: "", imageName: ""), project: ProjectItem(name: "生活消费", beginDate: Date(), endDate:Date(timeIntervalSinceNow: 86400) , totalAmount: 1500.0, imageName: ""), shop: "", date: Date(), time: "", tag: "", remark: "", imageName: "0.circle")]
+    var billItems: [BillItem] = [BillItem(price: 150.0, name: "午餐", status: "收入", category: "餐饮", account: AccountItem(name: "生活费", category: "线上支付", initialAmount: 1500.0, isShowTotalAmount: true, imageName: ""), project: ProjectItem(name: "生活消费", beginDate: Date(), endDate:Date(timeIntervalSinceNow: 86400) , totalAmount: 1500.0, imageName: ""), shop: "", date: Date(), tag: "", remark: "", imageName: "0.circle")]
     
     init() {
         self.calendar = FSCalendar(frame: .zero)
@@ -41,6 +41,16 @@ class BillViewController: UIViewController, FSCalendarDelegate,FSCalendarDataSou
         self.creatCalendar()
         self.creatTableView()
         self.creatButton()
+        let account = AccountItem(name: "生活费", category: "线上支付", initialAmount: 1500.0, isShowTotalAmount: true, imageName: "")
+        let project = ProjectItem(name: "生活消费", beginDate: Date(), endDate:Date(timeIntervalSinceNow: 86400) , totalAmount: 1500.0, imageName: "")
+        
+        ProjectItem.saveProject(projectItem: project)
+        AccountItem.saveAccount(accountItem: account)
+        for bill in billItems {
+            BillItem.saveBill(billItem: bill)
+        }
+        
+        
     }
     
     func creatTableView() {
@@ -87,7 +97,14 @@ class BillViewController: UIViewController, FSCalendarDelegate,FSCalendarDataSou
             make.right.equalToSuperview().offset(-5)
             make.height.width.equalTo(50)
         }
+        self.addBillButton.addTarget(self, action: #selector(BillViewController.clickButton), for: .touchUpInside)
         
+    }
+    
+    @objc func clickButton() {
+        let newBillVC = NewBillViewController(date: Date())
+        newBillVC.modalPresentationStyle = .fullScreen
+        self.present(newBillVC, animated: true, completion: nil)
     }
     
     

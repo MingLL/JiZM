@@ -10,7 +10,14 @@
 		9BA3596D9EB717870EF039D3 /* Pods_JiZM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D61210D8BDA2030D8AAE12BD /* Pods_JiZM.framework */; };
 		9C5703F224849EE5003B3EC6 /* BillTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5703F124849EE5003B3EC6 /* BillTableViewCell.swift */; };
 		9C5703F524849F82003B3EC6 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5703F424849F82003B3EC6 /* UIColorExtension.swift */; };
-		9C934ED02480E68E00F4730A /* category.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C934ECF2480E68E00F4730A /* category.plist */; };
+		9C5703F82484C0FA003B3EC6 /* NewBillViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5703F72484C0FA003B3EC6 /* NewBillViewController.swift */; };
+		9C5703FA2484C28C003B3EC6 /* MyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5703F92484C28C003B3EC6 /* MyButton.swift */; };
+		9C5703FC2484C2B0003B3EC6 /* MyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5703FB2484C2B0003B3EC6 /* MyTextField.swift */; };
+		9C5704012484CC7E003B3EC6 /* BillCategory.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C5704002484CC7E003B3EC6 /* BillCategory.plist */; };
+		9C5704052484D660003B3EC6 /* Plist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5704042484D660003B3EC6 /* Plist.swift */; };
+		9C570408248520C8003B3EC6 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C570407248520C8003B3EC6 /* AccountViewController.swift */; };
+		9C57040A248520D4003B3EC6 /* ProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C570409248520D4003B3EC6 /* ProjectViewController.swift */; };
+		9C934ED02480E68E00F4730A /* AccountCategory.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C934ECF2480E68E00F4730A /* AccountCategory.plist */; };
 		9C934ED62480E81100F4730A /* MyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C934ED52480E81100F4730A /* MyLabel.swift */; };
 		9C934ED9248135E100F4730A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C934ED8248135E100F4730A /* DetailViewController.swift */; };
 		9C934EDC2481372E00F4730A /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C934EDB2481372E00F4730A /* DetailView.swift */; };
@@ -27,7 +34,6 @@
 		9C97A1222480A11200844578 /* MineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C97A1212480A11200844578 /* MineViewController.swift */; };
 		9C97A1252480A12500844578 /* BudgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C97A1242480A12500844578 /* BudgetViewController.swift */; };
 		9C97A12A2480A15300844578 /* MoreFuncViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C97A1292480A15300844578 /* MoreFuncViewController.swift */; };
-		9C97A12C2480CDB200844578 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C97A12B2480CDB200844578 /* ViewController.swift */; };
 		9C97A12E2480DF6D00844578 /* BillItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C97A12D2480DF6D00844578 /* BillItem.swift */; };
 		9C97A1302480E0BD00844578 /* AccountItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C97A12F2480E0BD00844578 /* AccountItem.swift */; };
 		9C97A1332480E2AF00844578 /* ProjectItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C97A1322480E2AF00844578 /* ProjectItem.swift */; };
@@ -56,7 +62,14 @@
 		79A5B9A72498A364670FCAB1 /* Pods-JiZM.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JiZM.release.xcconfig"; path = "Target Support Files/Pods-JiZM/Pods-JiZM.release.xcconfig"; sourceTree = "<group>"; };
 		9C5703F124849EE5003B3EC6 /* BillTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillTableViewCell.swift; sourceTree = "<group>"; };
 		9C5703F424849F82003B3EC6 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
-		9C934ECF2480E68E00F4730A /* category.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = category.plist; sourceTree = "<group>"; };
+		9C5703F72484C0FA003B3EC6 /* NewBillViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBillViewController.swift; sourceTree = "<group>"; };
+		9C5703F92484C28C003B3EC6 /* MyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyButton.swift; sourceTree = "<group>"; };
+		9C5703FB2484C2B0003B3EC6 /* MyTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTextField.swift; sourceTree = "<group>"; };
+		9C5704002484CC7E003B3EC6 /* BillCategory.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = BillCategory.plist; sourceTree = "<group>"; };
+		9C5704042484D660003B3EC6 /* Plist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plist.swift; sourceTree = "<group>"; };
+		9C570407248520C8003B3EC6 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		9C570409248520D4003B3EC6 /* ProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectViewController.swift; sourceTree = "<group>"; };
+		9C934ECF2480E68E00F4730A /* AccountCategory.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = AccountCategory.plist; sourceTree = "<group>"; };
 		9C934ED52480E81100F4730A /* MyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLabel.swift; sourceTree = "<group>"; };
 		9C934ED8248135E100F4730A /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		9C934EDB2481372E00F4730A /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
@@ -79,7 +92,6 @@
 		9C97A1212480A11200844578 /* MineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineViewController.swift; sourceTree = "<group>"; };
 		9C97A1242480A12500844578 /* BudgetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetViewController.swift; sourceTree = "<group>"; };
 		9C97A1292480A15300844578 /* MoreFuncViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreFuncViewController.swift; sourceTree = "<group>"; };
-		9C97A12B2480CDB200844578 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		9C97A12D2480DF6D00844578 /* BillItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillItem.swift; sourceTree = "<group>"; };
 		9C97A12F2480E0BD00844578 /* AccountItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountItem.swift; sourceTree = "<group>"; };
 		9C97A1322480E2AF00844578 /* ProjectItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectItem.swift; sourceTree = "<group>"; };
@@ -149,21 +161,33 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		9C5703FD2484C9AA003B3EC6 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				9C97A0E324809AD800844578 /* AppDelegate.swift */,
+				9C97A0E524809AD800844578 /* SceneDelegate.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		9C57040624852047003B3EC6 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				9C570407248520C8003B3EC6 /* AccountViewController.swift */,
+				9C570409248520D4003B3EC6 /* ProjectViewController.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
 		9C934ED42480E7CC00F4730A /* Component */ = {
 			isa = PBXGroup;
 			children = (
 				9C934EDD24813A3500F4730A /* ItmeView.swift */,
 				9C934ED52480E81100F4730A /* MyLabel.swift */,
+				9C5703F92484C28C003B3EC6 /* MyButton.swift */,
+				9C5703FB2484C2B0003B3EC6 /* MyTextField.swift */,
 			);
 			path = Component;
-			sourceTree = "<group>";
-		};
-		9C934ED72481357400F4730A /* Detail */ = {
-			isa = PBXGroup;
-			children = (
-				9C934ED8248135E100F4730A /* DetailViewController.swift */,
-			);
-			path = Detail;
 			sourceTree = "<group>";
 		};
 		9C934EDA2481371C00F4730A /* View */ = {
@@ -199,6 +223,7 @@
 		9C97A0E224809AD800844578 /* JiZM */ = {
 			isa = PBXGroup;
 			children = (
+				9C5703FD2484C9AA003B3EC6 /* AppDelegate */,
 				9C5703F324849F70003B3EC6 /* Extensions */,
 				9CF789DD24824725006423D9 /* Util */,
 				9C934ED42480E7CC00F4730A /* Component */,
@@ -208,14 +233,12 @@
 				9C97A1182480A05100844578 /* BudgetController */,
 				9C97A1172480A01200844578 /* MineController */,
 				9C97A11624809F9C00844578 /* BillController */,
-				9C97A0E324809AD800844578 /* AppDelegate.swift */,
-				9C97A0E524809AD800844578 /* SceneDelegate.swift */,
 				9C97A0EF24809ADA00844578 /* Assets.xcassets */,
 				9C97A0F124809ADA00844578 /* LaunchScreen.storyboard */,
 				9C97A0F424809ADA00844578 /* Info.plist */,
 				9C97A0EC24809AD800844578 /* JiZM.xcdatamodeld */,
-				9C97A12B2480CDB200844578 /* ViewController.swift */,
-				9C934ECF2480E68E00F4730A /* category.plist */,
+				9C934ECF2480E68E00F4730A /* AccountCategory.plist */,
+				9C5704002484CC7E003B3EC6 /* BillCategory.plist */,
 			);
 			path = JiZM;
 			sourceTree = "<group>";
@@ -241,6 +264,7 @@
 		9C97A11624809F9C00844578 /* BillController */ = {
 			isa = PBXGroup;
 			children = (
+				9C57040624852047003B3EC6 /* Detail */,
 				9C5703F024849EC4003B3EC6 /* List */,
 				9C97A11F2480A0F400844578 /* Controller */,
 			);
@@ -251,7 +275,6 @@
 			isa = PBXGroup;
 			children = (
 				9C934EDA2481371C00F4730A /* View */,
-				9C934ED72481357400F4730A /* Detail */,
 				9C97A1202480A10100844578 /* Controller */,
 			);
 			path = MineController;
@@ -286,6 +309,7 @@
 			isa = PBXGroup;
 			children = (
 				9C97A11D2480A0F100844578 /* BillViewController.swift */,
+				9C5703F72484C0FA003B3EC6 /* NewBillViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -293,6 +317,7 @@
 		9C97A1202480A10100844578 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				9C934ED8248135E100F4730A /* DetailViewController.swift */,
 				9C97A1212480A11200844578 /* MineViewController.swift */,
 			);
 			path = Controller;
@@ -343,6 +368,7 @@
 		9CF789DD24824725006423D9 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				9C5704042484D660003B3EC6 /* Plist.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -453,8 +479,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9C934ED02480E68E00F4730A /* category.plist in Resources */,
+				9C934ED02480E68E00F4730A /* AccountCategory.plist in Resources */,
 				9C97A0F324809ADA00844578 /* LaunchScreen.storyboard in Resources */,
+				9C5704012484CC7E003B3EC6 /* BillCategory.plist in Resources */,
 				9C97A0F024809ADA00844578 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -522,21 +549,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C57040A248520D4003B3EC6 /* ProjectViewController.swift in Sources */,
 				9C97A0E424809AD800844578 /* AppDelegate.swift in Sources */,
 				9C97A1332480E2AF00844578 /* ProjectItem.swift in Sources */,
+				9C570408248520C8003B3EC6 /* AccountViewController.swift in Sources */,
+				9C5703F82484C0FA003B3EC6 /* NewBillViewController.swift in Sources */,
 				9C97A1302480E0BD00844578 /* AccountItem.swift in Sources */,
 				9C934EDE24813A3500F4730A /* ItmeView.swift in Sources */,
 				9C934ED62480E81100F4730A /* MyLabel.swift in Sources */,
 				9C5703F524849F82003B3EC6 /* UIColorExtension.swift in Sources */,
+				9C5703FA2484C28C003B3EC6 /* MyButton.swift in Sources */,
 				9C97A1252480A12500844578 /* BudgetViewController.swift in Sources */,
 				9CF789DB248205E0006423D9 /* ProjectTableViewCell.swift in Sources */,
 				9C5703F224849EE5003B3EC6 /* BillTableViewCell.swift in Sources */,
 				9CF789DF24824734006423D9 /* Date.swift in Sources */,
 				9C97A0E624809AD800844578 /* SceneDelegate.swift in Sources */,
-				9C97A12C2480CDB200844578 /* ViewController.swift in Sources */,
 				9C97A11E2480A0F100844578 /* BillViewController.swift in Sources */,
 				9C97A12E2480DF6D00844578 /* BillItem.swift in Sources */,
 				9C97A11C2480A0E300844578 /* FormViewController.swift in Sources */,
+				9C5703FC2484C2B0003B3EC6 /* MyTextField.swift in Sources */,
+				9C5704052484D660003B3EC6 /* Plist.swift in Sources */,
 				9C97A12A2480A15300844578 /* MoreFuncViewController.swift in Sources */,
 				9C97A0EE24809AD800844578 /* JiZM.xcdatamodeld in Sources */,
 				9C97A1222480A11200844578 /* MineViewController.swift in Sources */,
@@ -709,6 +741,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5T93Z8F848;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"COCOAPODS=1",
+				);
 				INFOPLIST_FILE = JiZM/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

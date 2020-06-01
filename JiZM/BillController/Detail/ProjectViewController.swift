@@ -1,29 +1,27 @@
 //
-//  BudgetViewController.swift
+//  ProjectViewController.swift
 //  JiZM
 //
-//  Created by MingL L on 2020/5/29.
+//  Created by MingL L on 2020/6/1.
 //  Copyright © 2020 MingL L. All rights reserved.
 //
 
 import UIKit
-import Foundation
-import SnapKit
 
-class BudgetViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
-  
+class ProjectViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
     var tableView: UITableView!
     
     var projectItems: Dictionary<String,Array<ProjectItem>> = ["进行中":[ProjectItem(name: "生活消费", beginDate: Date(), endDate: Date(timeIntervalSinceNow: 86400), totalAmount: 1500.0, imageName: "03.circle")]]
     
     var projectCategory:[String] = ["进行中", "未开始", "已结束"]
-// MARK: - lifeStyle
+    // MARK: - lifeStyle
     init() {
         self.tableView = UITableView()
         super.init(nibName: nil, bundle: nil)
         self.tabBarItem.image = UIImage(systemName: "creditcard", withConfiguration: UIImage.SymbolConfiguration(weight: .regular))
-        self.tabBarItem.title = "项目/预算"
-        self.navigationItem.title = "项目/预算"
+        self.tabBarItem.title = "项目"
+        self.navigationItem.title = "项目"
         self.edgesForExtendedLayout = UIRectEdge.init(rawValue: 0)
         self.tabBarController?.edgesForExtendedLayout = UIRectEdge.init(rawValue: 0)
     }
@@ -32,7 +30,7 @@ class BudgetViewController: UIViewController,UITableViewDelegate,UITableViewData
         fatalError("init(coder:) has not been implemented")
     }
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpViews()
@@ -48,7 +46,7 @@ class BudgetViewController: UIViewController,UITableViewDelegate,UITableViewData
         }
     }
     
-// MARK: - tableViewDelegate
+    // MARK: - tableViewDelegate
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return projectCategory.count
@@ -64,7 +62,7 @@ class BudgetViewController: UIViewController,UITableViewDelegate,UITableViewData
         return projectItems[projectCategory[section]]?.count ?? 0
     }
     
-      
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellID = String(describing: ProjectTableViewCell.self)
         var cell: ProjectTableViewCell? = tableView.dequeueReusableCell(withIdentifier: cellID) as? ProjectTableViewCell
@@ -83,5 +81,18 @@ class BudgetViewController: UIViewController,UITableViewDelegate,UITableViewData
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let projectKey = projectCategory[indexPath.section]
+        if let projectValue = projectItems[projectKey] {
+            let project = projectValue[indexPath.row]
+            self.dismiss(animated: true) {
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "projectName"), object:project.name)
+            }
+        }
 
+    }
+    
+    
+    
 }

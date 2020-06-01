@@ -1,27 +1,21 @@
 //
-//  MineViewController.swift
+//  AccountViewController.swift
 //  JiZM
 //
-//  Created by MingL L on 2020/5/29.
+//  Created by MingL L on 2020/6/1.
 //  Copyright © 2020 MingL L. All rights reserved.
 //
 
 import UIKit
-import Foundation
-import Charts
-import SnapKit
 
-
-class MineViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
- 
+class AccountViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    var chartView: BarChartView!
     var tabelView: UITableView!
     
     var accountItems: Dictionary<String,Array<AccountItem>> = ["现金":[AccountItem(name: "钱包", category: "现金", initialAmount: 1500.0, isShowTotalAmount: true, imageName: "0.circle")],"银行卡":[AccountItem(name: "生活费", category: "银行卡", initialAmount: 1000.0, isShowTotalAmount: true, imageName: "01.circle")],"线上交易":[AccountItem(name: "支付宝", category: "线上交易", initialAmount: 10000.0, isShowTotalAmount: true, imageName: "02.circle"),AccountItem(name: "微信", category: "线上交易", initialAmount: 1234.0, isShowTotalAmount: false, imageName: "03.circle")]]
     var accountCategory = ["现金", "银行卡", "线上交易"]
     
-// MARK: - lifeStyle
+    // MARK: - lifeStyle
     init() {
         super.init(nibName: nil, bundle: nil)
         self.tabBarItem.image = UIImage(systemName: "person")
@@ -34,7 +28,7 @@ class MineViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.creatViews()
@@ -43,31 +37,17 @@ class MineViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     }
     
     func creatViews() {
-        self.chartView = BarChartView.init(frame: .zero)
         self.tabelView = UITableView.init(frame: .zero)
-        self.chartView.backgroundColor = .red
         self.tabelView.backgroundColor = .green
-        self.view.addSubview(chartView)
         self.view.addSubview(tabelView)
         
-        chartView.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(10)
-            make.left.equalToSuperview().offset(10)
-            make.right.equalToSuperview().offset(-10)
-            make.height.equalTo(300)
-        }
-        
         tabelView.snp.makeConstraints { (make) in
-            make.top.equalTo(chartView.snp.bottom).offset(10)
-            make.left.equalToSuperview().offset(10)
-            make.right.equalToSuperview().offset(-10)
-            make.bottom.equalToSuperview()
-            
+            make.edges.equalToSuperview()
         }
     }
     
-
-// MARK: - tableViewDelegate
+    
+    // MARK: - tableViewDelegate
     
     //返回每个分组的数量
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -77,7 +57,7 @@ class MineViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     //返回每个分组内数量
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return accountItems[accountCategory[section]]?.count ?? 0
-     }
+    }
     
     //自定义分类头的设计
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -132,10 +112,11 @@ class MineViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         let accountKey = accountCategory[indexPath.section]
         if let accountValue = accountItems[accountKey] {
             let account = accountValue[indexPath.row]
-            let detailVC = DetailViewController(account: account)
-            detailVC.hidesBottomBarWhenPushed = true
-            self.navigationController?.pushViewController(detailVC, animated: true)
+            self.dismiss(animated: true) {
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "accountName"), object:account.name)
+            }
         }
     }
-
+    
+    
 }
