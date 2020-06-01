@@ -9,13 +9,16 @@
 import UIKit
 import FSCalendar
 
-class BillViewController: UIViewController, FSCalendarDelegate,FSCalendarDataSource {
+class BillViewController: UIViewController, FSCalendarDelegate,FSCalendarDataSource,UITableViewDelegate, UITableViewDataSource {
+    
     
     var calendar: FSCalendar!
     
     var tableView: UITableView!
     
     var addBillButton: UIButton!
+    
+    var billItems: [BillItem] = [BillItem(price: 150.0, name: "午餐", status: "收入", category: "餐饮", account: AccountItem(name: "生活费", category: "线上支付", initialAmount: 1500.0, isShowTotalAmount: true, describe: "", imageName: ""), project: ProjectItem(name: "生活消费", beginDate: Date(), endDate:Date(timeIntervalSinceNow: 86400) , totalAmount: 1500.0, imageName: ""), shop: "", date: Date(), time: "", tag: "", remark: "", imageName: "0.circle")]
     
     init() {
         self.calendar = FSCalendar(frame: .zero)
@@ -41,6 +44,8 @@ class BillViewController: UIViewController, FSCalendarDelegate,FSCalendarDataSou
     }
     
     func creatTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
         self.view.addSubview(tableView)
         self.tableView.snp.makeConstraints { (make) in
             make.top.equalTo(self.calendar.snp.bottom).offset(3)
@@ -48,8 +53,9 @@ class BillViewController: UIViewController, FSCalendarDelegate,FSCalendarDataSou
             make.right.equalToSuperview().offset(-3)
         }
         
+        
     }
-
+    
     func creatCalendar()  {
         self.calendar.delegate = self
         self.calendar.dataSource = self
@@ -84,7 +90,27 @@ class BillViewController: UIViewController, FSCalendarDelegate,FSCalendarDataSou
         
     }
     
-   
+    
+    //MARK: - tableView delegate and dataSource
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return billItems.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cellID = String(describing: BillTableViewCell.self)
+        var cell: BillTableViewCell? = tableView.dequeueReusableCell(withIdentifier: cellID) as? BillTableViewCell
+        if cell == nil {
+            cell = BillTableViewCell(style: .default, reuseIdentifier: cellID)
+        }
+        let bill = billItems[indexPath.row]
+        cell?.setBillItemForCell(bill: bill)
+        return cell!
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 70
+    }
+    
     
     
 }

@@ -45,6 +45,9 @@ class ProjectTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
+    
+    /// 布局子视图
     override func layoutSubviews() {
         self.iconView.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(3)
@@ -78,6 +81,9 @@ class ProjectTableViewCell: UITableViewCell {
         }
     }
     
+    
+    /// 填充数据
+    /// - Parameter project: ProjectItem Model
     func setProjectItemForCell(project:ProjectItem)  {
         self.iconView.image = UIImage(systemName: project.imageName)
         self.nameLabel.text = project.name

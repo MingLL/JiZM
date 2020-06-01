@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		9BA3596D9EB717870EF039D3 /* Pods_JiZM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D61210D8BDA2030D8AAE12BD /* Pods_JiZM.framework */; };
+		9C5703F224849EE5003B3EC6 /* BillTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5703F124849EE5003B3EC6 /* BillTableViewCell.swift */; };
+		9C5703F524849F82003B3EC6 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5703F424849F82003B3EC6 /* UIColorExtension.swift */; };
 		9C934ED02480E68E00F4730A /* category.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C934ECF2480E68E00F4730A /* category.plist */; };
 		9C934ED62480E81100F4730A /* MyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C934ED52480E81100F4730A /* MyLabel.swift */; };
 		9C934ED9248135E100F4730A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C934ED8248135E100F4730A /* DetailViewController.swift */; };
@@ -52,6 +54,8 @@
 
 /* Begin PBXFileReference section */
 		79A5B9A72498A364670FCAB1 /* Pods-JiZM.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JiZM.release.xcconfig"; path = "Target Support Files/Pods-JiZM/Pods-JiZM.release.xcconfig"; sourceTree = "<group>"; };
+		9C5703F124849EE5003B3EC6 /* BillTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillTableViewCell.swift; sourceTree = "<group>"; };
+		9C5703F424849F82003B3EC6 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		9C934ECF2480E68E00F4730A /* category.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = category.plist; sourceTree = "<group>"; };
 		9C934ED52480E81100F4730A /* MyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLabel.swift; sourceTree = "<group>"; };
 		9C934ED8248135E100F4730A /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -128,6 +132,23 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		9C5703F024849EC4003B3EC6 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				9C5703F124849EE5003B3EC6 /* BillTableViewCell.swift */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		9C5703F324849F70003B3EC6 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9CF789DE24824734006423D9 /* Date.swift */,
+				9C5703F424849F82003B3EC6 /* UIColorExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		9C934ED42480E7CC00F4730A /* Component */ = {
 			isa = PBXGroup;
 			children = (
@@ -178,6 +199,7 @@
 		9C97A0E224809AD800844578 /* JiZM */ = {
 			isa = PBXGroup;
 			children = (
+				9C5703F324849F70003B3EC6 /* Extensions */,
 				9CF789DD24824725006423D9 /* Util */,
 				9C934ED42480E7CC00F4730A /* Component */,
 				9C97A1312480E0CE00844578 /* Model */,
@@ -219,6 +241,7 @@
 		9C97A11624809F9C00844578 /* BillController */ = {
 			isa = PBXGroup;
 			children = (
+				9C5703F024849EC4003B3EC6 /* List */,
 				9C97A11F2480A0F400844578 /* Controller */,
 			);
 			path = BillController;
@@ -320,7 +343,6 @@
 		9CF789DD24824725006423D9 /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				9CF789DE24824734006423D9 /* Date.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -505,8 +527,10 @@
 				9C97A1302480E0BD00844578 /* AccountItem.swift in Sources */,
 				9C934EDE24813A3500F4730A /* ItmeView.swift in Sources */,
 				9C934ED62480E81100F4730A /* MyLabel.swift in Sources */,
+				9C5703F524849F82003B3EC6 /* UIColorExtension.swift in Sources */,
 				9C97A1252480A12500844578 /* BudgetViewController.swift in Sources */,
 				9CF789DB248205E0006423D9 /* ProjectTableViewCell.swift in Sources */,
+				9C5703F224849EE5003B3EC6 /* BillTableViewCell.swift in Sources */,
 				9CF789DF24824734006423D9 /* Date.swift in Sources */,
 				9C97A0E624809AD800844578 /* SceneDelegate.swift in Sources */,
 				9C97A12C2480CDB200844578 /* ViewController.swift in Sources */,

@@ -11,23 +11,44 @@ import Foundation
 class BillItem {
     var price: Float
     var name: String
-    var accout: AccountItem
-    var project: ProjectItem
-    var shop: String
+    var status: String
+    var category: String
+    var account: AccountItem
+    var project: ProjectItem?
+    var shop: String?
     var date: Date
     var time: String
-    var tag: String
-    var remark: String
+    var tag: String?
+    var remark: String?
+    var imageName: String
+    
     init() {
-        self.price = Float()
-        self.name = String()
-        self.accout = AccountItem()
-        self.project = ProjectItem()
-        self.shop = String()
+        self.price = 0.0
+        self.category = ""
+        self.name = ""
+        self.account = AccountItem()
+        self.shop = ""
         self.date = Date()
-        self.time = String()
-        self.tag = String()
-        self.remark = String()
+        self.time = ""
+        self.tag = ""
+        self.remark = ""
+        self.imageName = ""
+        self.status = ""
     }
     
+    init(price: Float, name: String, status:String, category: String, account: AccountItem, project: ProjectItem, shop: String, date: Date, time: String, tag: String, remark: String, imageName: String) {
+        self.price = price
+        self.name = name
+        self.status = status
+        self.category = category
+        self.account = account
+        self.project = project
+        self.shop = shop
+        self.date = date
+        self.time = time
+        self.tag = tag
+        self.remark = remark
+        self.imageName = imageName
+        
+    }
 }
