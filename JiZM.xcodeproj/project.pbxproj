@@ -17,6 +17,8 @@
 		9C5704052484D660003B3EC6 /* Plist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5704042484D660003B3EC6 /* Plist.swift */; };
 		9C570408248520C8003B3EC6 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C570407248520C8003B3EC6 /* AccountViewController.swift */; };
 		9C57040A248520D4003B3EC6 /* ProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C570409248520D4003B3EC6 /* ProjectViewController.swift */; };
+		9C57041124863A53003B3EC6 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C57041024863A53003B3EC6 /* CategoryViewController.swift */; };
+		9C570413248646F3003B3EC6 /* BillCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C570412248646F3003B3EC6 /* BillCategory.swift */; };
 		9C934ED02480E68E00F4730A /* AccountCategory.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C934ECF2480E68E00F4730A /* AccountCategory.plist */; };
 		9C934ED62480E81100F4730A /* MyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C934ED52480E81100F4730A /* MyLabel.swift */; };
 		9C934ED9248135E100F4730A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C934ED8248135E100F4730A /* DetailViewController.swift */; };
@@ -69,6 +71,8 @@
 		9C5704042484D660003B3EC6 /* Plist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plist.swift; sourceTree = "<group>"; };
 		9C570407248520C8003B3EC6 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		9C570409248520D4003B3EC6 /* ProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectViewController.swift; sourceTree = "<group>"; };
+		9C57041024863A53003B3EC6 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
+		9C570412248646F3003B3EC6 /* BillCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillCategory.swift; sourceTree = "<group>"; };
 		9C934ECF2480E68E00F4730A /* AccountCategory.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = AccountCategory.plist; sourceTree = "<group>"; };
 		9C934ED52480E81100F4730A /* MyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLabel.swift; sourceTree = "<group>"; };
 		9C934ED8248135E100F4730A /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -310,6 +314,7 @@
 			children = (
 				9C97A11D2480A0F100844578 /* BillViewController.swift */,
 				9C5703F72484C0FA003B3EC6 /* NewBillViewController.swift */,
+				9C57041024863A53003B3EC6 /* CategoryViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -353,6 +358,7 @@
 				9C97A12F2480E0BD00844578 /* AccountItem.swift */,
 				9C97A12D2480DF6D00844578 /* BillItem.swift */,
 				9C97A1322480E2AF00844578 /* ProjectItem.swift */,
+				9C570412248646F3003B3EC6 /* BillCategory.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -559,6 +565,7 @@
 				9C934ED62480E81100F4730A /* MyLabel.swift in Sources */,
 				9C5703F524849F82003B3EC6 /* UIColorExtension.swift in Sources */,
 				9C5703FA2484C28C003B3EC6 /* MyButton.swift in Sources */,
+				9C57041124863A53003B3EC6 /* CategoryViewController.swift in Sources */,
 				9C97A1252480A12500844578 /* BudgetViewController.swift in Sources */,
 				9CF789DB248205E0006423D9 /* ProjectTableViewCell.swift in Sources */,
 				9C5703F224849EE5003B3EC6 /* BillTableViewCell.swift in Sources */,
@@ -571,6 +578,7 @@
 				9C5704052484D660003B3EC6 /* Plist.swift in Sources */,
 				9C97A12A2480A15300844578 /* MoreFuncViewController.swift in Sources */,
 				9C97A0EE24809AD800844578 /* JiZM.xcdatamodeld in Sources */,
+				9C570413248646F3003B3EC6 /* BillCategory.swift in Sources */,
 				9C97A1222480A11200844578 /* MineViewController.swift in Sources */,
 				9C934EDC2481372E00F4730A /* DetailView.swift in Sources */,
 				9C934ED9248135E100F4730A /* DetailViewController.swift in Sources */,

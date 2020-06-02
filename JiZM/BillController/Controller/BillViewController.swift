@@ -41,16 +41,6 @@ class BillViewController: UIViewController, FSCalendarDelegate,FSCalendarDataSou
         self.creatCalendar()
         self.creatTableView()
         self.creatButton()
-        let account = AccountItem(name: "生活费", category: "线上支付", initialAmount: 1500.0, isShowTotalAmount: true, imageName: "")
-        let project = ProjectItem(name: "生活消费", beginDate: Date(), endDate:Date(timeIntervalSinceNow: 86400) , totalAmount: 1500.0, imageName: "")
-        
-        ProjectItem.saveProject(projectItem: project)
-        AccountItem.saveAccount(accountItem: account)
-        for bill in billItems {
-            BillItem.saveBill(billItem: bill)
-        }
-        
-        
     }
     
     func creatTableView() {

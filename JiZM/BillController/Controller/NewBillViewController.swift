@@ -11,7 +11,7 @@ import Customkeyboard
 
 class NewBillViewController: UIViewController {
     
-    var blackView: UIView!
+    var categoryVC: CategoryViewController!
     var imageView: UIImageView!
     var priceInputLabel: MyTextField!
     var nameInputLabel: MyTextField!
@@ -40,9 +40,9 @@ class NewBillViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        creatCategoryView()
         creatViews()
         creatAddButton()
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -71,28 +71,16 @@ class NewBillViewController: UIViewController {
         }
     }
     
-    @objc func ClickButton() {
-        self.saveData()
-        let alart = UILabel()
-        alart.text = "保存成功"
-        alart.font = UIFont.systemFont(ofSize: 17)
-        alart.textAlignment = .center
-        alart.backgroundColor = .orange
-        alart.layer.cornerRadius = 5
-        
-        UIView.animate(withDuration: 1, animations: {
-            self.view.addSubview(alart)
-            alart.snp.makeConstraints { (make) in
-                make.centerY.centerX.equalToSuperview()
-            }
-        }) { (b:Bool) in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                alart.removeFromSuperview()
-                self.dismiss(animated: true, completion: nil)
-            }
+    private func creatCategoryView() {
+        self.categoryVC = CategoryViewController()
+        self.addChild(categoryVC)
+        self.view.addSubview(self.categoryVC.view)
+
+        self.categoryVC.view.snp.makeConstraints { (make) in
+            make.top.equalToSuperview().offset(80)
+            make.left.right.equalToSuperview()
+            make.height.equalTo(150)
         }
-        
-        
     }
     
     private func saveData() {
@@ -101,7 +89,6 @@ class NewBillViewController: UIViewController {
     
     private func creatViews() {
         
-        blackView = UIView(frame: .zero)
         imageView = UIImageView(frame: .zero)
         priceInputLabel = MyTextField(frame: .zero)
         nameInputLabel = MyTextField(frame: .zero)
@@ -114,7 +101,6 @@ class NewBillViewController: UIViewController {
         timeButton = MyButton(frame: .zero)
         imageView.image = UIImage(systemName: "photo")
         
-        self.view.addSubview(blackView)
         self.view.addSubview(imageView)
         self.view.addSubview(priceInputLabel)
         self.view.addSubview(nameInputLabel)
@@ -171,19 +157,15 @@ class NewBillViewController: UIViewController {
         
         
         
-        blackView.snp.makeConstraints { (make) in
-            make.left.right.equalToSuperview()
-            make.top.equalToSuperview().offset(50)
-            make.height.equalTo(100)
-        }
+        
         imageView.snp.makeConstraints { (make) in
-            make.top.equalTo(blackView.snp.bottom).offset(10)
+            make.top.equalTo(categoryVC.view.snp.bottom).offset(10)
             make.left.equalToSuperview().offset(10)
             make.width.equalTo(100)
             make.height.equalTo(100)
         }
         priceInputLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(blackView.snp.bottom).offset(10)
+            make.top.equalTo(categoryVC.view.snp.bottom).offset(10)
             make.left.equalTo(imageView.snp.right).offset(10)
             make.right.equalToSuperview().offset(-10)
             make.height.equalTo(45)
@@ -254,6 +236,30 @@ class NewBillViewController: UIViewController {
         return dateformatter.string(from: self.currentDate ?? Date())
     }
     
+    
+    @objc func ClickButton() {
+         self.saveData()
+         let alart = UILabel()
+         alart.text = "保存成功"
+         alart.font = UIFont.systemFont(ofSize: 17)
+         alart.textAlignment = .center
+         alart.backgroundColor = .orange
+         alart.layer.cornerRadius = 5
+         
+         UIView.animate(withDuration: 1, animations: {
+             self.view.addSubview(alart)
+             alart.snp.makeConstraints { (make) in
+                 make.centerY.centerX.equalToSuperview()
+             }
+         }) { (b:Bool) in
+             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                 alart.removeFromSuperview()
+                 self.dismiss(animated: true, completion: nil)
+             }
+         }
+         
+         
+     }
     
     @objc func accountButtonClick() {
         let accountVC = AccountViewController()

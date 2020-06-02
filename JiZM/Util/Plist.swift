@@ -15,10 +15,10 @@ class Plist {
         print(data)
     }
     
-    static func readBillCategoryPlist() {
+    static func readBillCategoryPlist() -> Dictionary<String,Any> {
         let billCategory: String = Bundle.main.path(forResource: "BillCategory", ofType: "plist") ?? ""
         let data: NSMutableDictionary = NSMutableDictionary.init(contentsOfFile: billCategory)!
-        print(data)
-        
+
+        return data as! Dictionary<String,Any>
     }
 }
