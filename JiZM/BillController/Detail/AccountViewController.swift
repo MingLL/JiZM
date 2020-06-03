@@ -113,7 +113,7 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
         if let accountValue = accountItems[accountKey] {
             let account = accountValue[indexPath.row]
             self.dismiss(animated: true) {
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "accountName"), object:account.name)
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "accountName"), object:account)
             }
         }
     }

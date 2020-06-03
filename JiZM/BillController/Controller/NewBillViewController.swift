@@ -25,6 +25,10 @@ class NewBillViewController: UIViewController {
     var addButton: UIButton!
     var currentDate: Date?
     
+    var account: AccountItem!
+    
+    var project: ProjectItem?
+    
     
     init(date: Date) {
         self.currentDate = date
@@ -84,7 +88,21 @@ class NewBillViewController: UIViewController {
     }
     
     private func saveData() {
+        let bill = BillItem()
+        bill.name = self.nameInputLabel.text ?? self.categoryVC.categoryLabel.text!
+        let price = self.priceInputLabel.text ?? "0.0"
+        bill.price = Float(price) ?? 0.0
+        bill.account = self.account
+        if self.project != nil {
+            bill.project = self.project
+        }
         
+        bill.category = self.categoryVC.categoryString
+        bill.date = self.currentDate ?? Date()
+        bill.remark = self.remarkInputLabel.text
+        bill.status = self.categoryVC.payButton.isSelected ? "支出" : "收入"
+        bill.shop = self.shopInputLabel.text ?? ""
+        BillItem.saveBill(billItem: bill)
     }
     
     private func creatViews() {
@@ -272,14 +290,16 @@ class NewBillViewController: UIViewController {
     }
     
     @objc func setAccountButtonTitle(title: NSNotification) {
-        if let name = title.object as? String {
-            accountButton.setTitle(name, for: .normal)
+        if let account = title.object as? AccountItem {
+            self.account = account
+            accountButton.setTitle(account.name, for: .normal)
         }
     }
     
     @objc func setProjectButtonTitle(title: NSNotification) {
-        if let name = title.object as? String {
-            projectButton.setTitle(name, for: .normal)
+        if let project = title.object as? ProjectItem {
+            self.project = project
+            projectButton.setTitle(project.name, for: .normal)
         }
     }
 

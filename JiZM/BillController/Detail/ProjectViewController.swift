@@ -87,7 +87,7 @@ class ProjectViewController: UIViewController, UITableViewDelegate, UITableViewD
         if let projectValue = projectItems[projectKey] {
             let project = projectValue[indexPath.row]
             self.dismiss(animated: true) {
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "projectName"), object:project.name)
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "projectName"), object:project)
             }
         }
 

@@ -10,22 +10,29 @@ import UIKit
 
 class CategoryViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
+    let payCellID = "payCellID"
     
+    let incomeCellID = "incomeCellID"
     
     var payCollectionView: UICollectionView!
     
     var incomeCollectionView: UICollectionView!
     
-    var layout: UICollectionViewFlowLayout!
+    var payLayout: UICollectionViewFlowLayout!
     
+    var incomeLayout: UICollectionViewFlowLayout!
     
     var payDatas:[BillCategory] = []
     
-    var incomeData: [String]!
+    var incomeDatas: [String]!
     
     var payButton: UIButton!
     
     var incomeButton: UIButton!
+    
+    var categoryLabel: UILabel!
+    
+    var categoryString: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,23 +50,38 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
         self.payButton.setTitleColor(.red, for: .selected)
         self.incomeButton.setTitleColor(.red, for: .selected)
         self.payButton.isSelected = true
-        layout = UICollectionViewFlowLayout.init()
-        layout.itemSize = CGSize(width: 60, height: 60)
-        layout.minimumLineSpacing = 5
-        layout.minimumInteritemSpacing = 5
-        layout.scrollDirection = .vertical
-        self.payCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        self.incomeCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        self.categoryLabel = UILabel(frame: .zero)
+        self.categoryLabel.text = "早餐"
+        
+        
+        payLayout = UICollectionViewFlowLayout()
+        payLayout.itemSize = CGSize(width: 50, height: 50)
+        payLayout.minimumLineSpacing = 3
+        payLayout.minimumInteritemSpacing = 3
+        payLayout.scrollDirection = .vertical
+        incomeLayout = UICollectionViewFlowLayout()
+        incomeLayout.itemSize = CGSize(width: 50, height: 50)
+        incomeLayout.minimumLineSpacing = 3
+        incomeLayout.minimumInteritemSpacing = 3
+        incomeLayout.scrollDirection = .vertical
+        self.payCollectionView = UICollectionView(frame: .zero, collectionViewLayout: payLayout)
+        self.incomeCollectionView = UICollectionView(frame: .zero, collectionViewLayout: incomeLayout)
         self.payCollectionView.tag = 100001
         self.incomeCollectionView.tag = 100002
+        
+        
         self.payCollectionView.delegate = self
         self.payCollectionView.dataSource = self
         
         
         self.incomeCollectionView.delegate = self
         self.incomeCollectionView.dataSource = self
-        self.payCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "100001")
-        self.incomeCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "100002")
+        
+        
+        self.payCollectionView.register(UINib(nibName: "CategoryCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: payCellID)
+        
+        
+        self.incomeCollectionView.register(UINib(nibName: "CategoryCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: incomeCellID)
         
         
         self.view.addSubview(self.payButton)
@@ -90,7 +112,7 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
         self.payCollectionView.snp.makeConstraints { (make) in
             make.top.top.equalTo(self.payButton.snp.bottom).offset(2)
             make.left.equalToSuperview().offset(5)
-            make.right.equalToSuperview().offset(-2)
+            make.right.equalToSuperview().offset(-5)
             make.bottom.equalToSuperview()
         }
         
@@ -99,7 +121,7 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     func getData() {
         let data = Plist.readBillCategoryPlist()
-        incomeData = (data["收入"] as! Array<String>)
+        incomeDatas = (data["收入"] as! Array<String>)
         let payKey = data["支出"] as! Dictionary<String, Any>
         for key in payKey.keys {
             let billCategory = BillCategory()
@@ -124,7 +146,7 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
             self.payCollectionView.snp.makeConstraints { (make) in
                 make.top.top.equalTo(self.payButton.snp.bottom).offset(2)
                 make.left.equalToSuperview().offset(5)
-                make.right.equalToSuperview().offset(-2)
+                make.right.equalToSuperview().offset(-5)
                 make.bottom.equalToSuperview()
             }
         }
@@ -144,35 +166,96 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
             self.incomeCollectionView.snp.makeConstraints { (make) in
                 make.top.top.equalTo(self.payButton.snp.bottom).offset(2)
                 make.left.equalToSuperview().offset(5)
-                make.right.equalToSuperview().offset(-2)
+                make.right.equalToSuperview().offset(-5)
                 make.bottom.equalToSuperview()
             }
         }
     }
     
     
-//MARK: -collectionView
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
+    //MARK: -collectionView
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return payDatas.count
+        if collectionView.tag == 100001 {
+            return payDatas.count
+        } else {
+            return incomeDatas.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "100001", for: indexPath)
-            let label = UILabel(frame: .zero)
-            label.text = payDatas[indexPath.row].name
-            label.adjustsFontSizeToFitWidth = true
-            cell.contentView.addSubview(label)
-            label.snp.makeConstraints { (make) in
-                make.centerX.centerY.equalToSuperview()
-                make.height.equalTo(35)
-            }
+        
+        if collectionView.tag == 100001 {
+            let cell: CategoryCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: payCellID, for: indexPath) as! CategoryCollectionViewCell
+            cell.label.text = payDatas[indexPath.row].name
+            cell.label.font = UIFont.systemFont(ofSize: 14)
+            cell.label.numberOfLines = 0
+            cell.backgroundColor = .green
             return cell
-       
+        } else {
+            let cell: CategoryCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: incomeCellID, for: indexPath) as! CategoryCollectionViewCell
+            cell.label.text = incomeDatas[indexPath.row]
+            cell.label.font = UIFont.systemFont(ofSize: 14)
+            cell.label.numberOfLines = 0
+            cell.backgroundColor = .red
+            return cell
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView.tag == 100001 {
+            if payDatas[indexPath.row].status == 0 {
+                
+                self.categoryString = payDatas[indexPath.row].name
+                
+                let name = payDatas[indexPath.row].name!
+                let data = Plist.readBillCategoryPlist()
+                let payKey = data["支出"] as! Dictionary<String, Any>
+                let payValue = payKey[name] as! [String]
+                payDatas.removeAll()
+                let back = BillCategory()
+                back.name = "返回"
+                back.status = 1
+                payDatas.append(back)
+                for value in payValue {
+                    let billCategory = BillCategory()
+                    billCategory.name = value
+                    billCategory.status = 1
+                    payDatas.append(billCategory)
+                }
+                collectionView.reloadData()
+            }else if payDatas[indexPath.row].status == 1{
+                if payDatas[indexPath.row].name == "返回" {
+                    let data = Plist.readBillCategoryPlist()
+                    let payKey = data["支出"] as! Dictionary<String, Any>
+                    payDatas.removeAll()
+                    for key in payKey.keys {
+                        let billCategory = BillCategory()
+                        billCategory.name = key
+                        billCategory.status = 0
+                        payDatas.append(billCategory)
+                    }
+                    collectionView.reloadData()
+                    
+                } else {
+                    collectionView.removeFromSuperview()
+                    self.payButton.removeFromSuperview()
+                    self.incomeButton.removeFromSuperview()
+                    self.categoryLabel.text = payDatas[indexPath.row].name
+                    categoryLabel.textColor = .red
+                    self.view.addSubview(self.categoryLabel)
+                    self.categoryLabel.snp.makeConstraints { (make) in
+                        make.top.equalToSuperview().offset(3)
+                        make.left.equalToSuperview().offset(20)
+                        make.height.equalTo(50)
+                        make.width.equalTo(50)
+                    }
+                }
+            }
+            
+        } else {
+            
+        }
     }
 }
