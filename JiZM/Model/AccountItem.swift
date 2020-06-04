@@ -99,7 +99,6 @@ class AccountItem {
         account.imageName = accountItem.imageName
         account.initialAmount = accountItem.initialAmount
         account.isShowTotalAmount = accountItem.isShowTotalAmount
-        
         app.saveContext()
     }
 }

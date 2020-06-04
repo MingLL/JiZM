@@ -13,15 +13,15 @@ import SnapKit
 
 
 class MineViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
- 
+    
     
     var chartView: BarChartView!
     var tabelView: UITableView!
     
-    var accountItems: Dictionary<String,Array<AccountItem>> = ["现金":[AccountItem(name: "钱包", category: "现金", initialAmount: 1500.0, isShowTotalAmount: true, imageName: "0.circle")],"银行卡":[AccountItem(name: "生活费", category: "银行卡", initialAmount: 1000.0, isShowTotalAmount: true, imageName: "01.circle")],"线上交易":[AccountItem(name: "支付宝", category: "线上交易", initialAmount: 10000.0, isShowTotalAmount: true, imageName: "02.circle"),AccountItem(name: "微信", category: "线上交易", initialAmount: 1234.0, isShowTotalAmount: false, imageName: "03.circle")]]
-    var accountCategory = ["现金", "银行卡", "线上交易"]
+    var accountItems: Dictionary<String,Array<AccountItem>> = Dictionary()
+    var accountCategory: [String] = []
     
-// MARK: - lifeStyle
+    // MARK: - lifeStyle
     init() {
         super.init(nibName: nil, bundle: nil)
         self.tabBarItem.image = UIImage(systemName: "person")
@@ -34,12 +34,18 @@ class MineViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.creatViews()
+        self.getAccountData()
         tabelView.delegate = self
         tabelView.dataSource = self
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.getAccountData()
+        self.tabelView.reloadData()
     }
     
     func creatViews() {
@@ -66,8 +72,8 @@ class MineViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         }
     }
     
-
-// MARK: - tableViewDelegate
+    
+    // MARK: - tableViewDelegate
     
     //返回每个分组的数量
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -77,7 +83,7 @@ class MineViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     //返回每个分组内数量
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return accountItems[accountCategory[section]]?.count ?? 0
-     }
+    }
     
     //自定义分类头的设计
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -137,5 +143,54 @@ class MineViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             self.navigationController?.pushViewController(detailVC, animated: true)
         }
     }
-
+    
+    func getAccountData()  {
+        self.accountItems.removeAll()
+        let datas = AccountItem.searchAccounts()
+        for account in datas {
+            switch account.category {
+            case "现金":
+                if self.accountItems.keys.contains("现金") {
+                    var keysValue = accountItems["现金"]!
+                    keysValue.append(account)
+                } else {
+                    self.accountItems["现金"] = [account]
+                }
+            case "银行":
+                if self.accountItems.keys.contains("银行") {
+                    var keysValue = accountItems["银行"]!
+                    keysValue.append(account)
+                } else {
+                    self.accountItems["银行"] = [account]
+                }
+            case "信用卡":
+                if self.accountItems.keys.contains("信用卡") {
+                    var keysValue = accountItems["信用卡"]!
+                    keysValue.append(account)
+                } else {
+                    self.accountItems["信用卡"] = [account]
+                }
+            case "线上支付":
+                if self.accountItems.keys.contains("线上支付") {
+                    var keysValue = accountItems["线上支付"]!
+                    keysValue.append(account)
+                } else {
+                    self.accountItems["线上支付"] = [account]
+                }
+            case "其他":
+                if self.accountItems.keys.contains("其他") {
+                    var keysValue = accountItems["其他"]!
+                    keysValue.append(account)
+                } else {
+                    self.accountItems["其他"] = [account]
+                }
+            default:
+                break
+            }
+        }
+        for key in self.accountItems.keys {
+            self.accountCategory.append(key)
+        }
+    }
+    
 }

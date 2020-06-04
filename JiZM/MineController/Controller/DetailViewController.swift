@@ -23,8 +23,6 @@ class DetailViewController: UIViewController {
         self.detailView = DetailView(frame: .zero)
         super.init(nibName: nil, bundle: nil)
         self.edgesForExtendedLayout = UIRectEdge.init(rawValue: 0)
-
-        
     }
     
     init(account: AccountItem) {
@@ -57,7 +55,6 @@ class DetailViewController: UIViewController {
         initialAmmountTextField.text = String(account.initialAmount)
         let isShowTotalAmoutSwitch = self.detailView.isShowTotalAmout.typeView as! UISwitch
         isShowTotalAmoutSwitch.isOn = account.isShowTotalAmount
-        
     }
  
 }
