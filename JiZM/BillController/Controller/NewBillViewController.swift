@@ -89,7 +89,11 @@ class NewBillViewController: UIViewController {
     
     private func saveData() {
         let bill = BillItem()
-        bill.name = self.nameInputLabel.text ?? self.categoryVC.categoryLabel.text!
+        if self.nameInputLabel.text! == "" {
+            bill.name = self.categoryVC.categoryLabel.text!
+        } else {
+            bill.name = self.nameInputLabel.text!
+        }
         let price = self.priceInputLabel.text ?? "0.0"
         bill.price = Float(price) ?? 0.0
         bill.account = self.account

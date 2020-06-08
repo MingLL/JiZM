@@ -41,6 +41,7 @@
 		9C97A12E2480DF6D00844578 /* BillItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C97A12D2480DF6D00844578 /* BillItem.swift */; };
 		9C97A1302480E0BD00844578 /* AccountItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C97A12F2480E0BD00844578 /* AccountItem.swift */; };
 		9C97A1332480E2AF00844578 /* ProjectItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C97A1322480E2AF00844578 /* ProjectItem.swift */; };
+		9C9B343E248CD3A200D67678 /* AmountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9B343D248CD3A200D67678 /* AmountView.swift */; };
 		9CF789DB248205E0006423D9 /* ProjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF789DA248205E0006423D9 /* ProjectTableViewCell.swift */; };
 		9CF789DF24824734006423D9 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF789DE24824734006423D9 /* Date.swift */; };
 /* End PBXBuildFile section */
@@ -103,6 +104,7 @@
 		9C97A12D2480DF6D00844578 /* BillItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillItem.swift; sourceTree = "<group>"; };
 		9C97A12F2480E0BD00844578 /* AccountItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountItem.swift; sourceTree = "<group>"; };
 		9C97A1322480E2AF00844578 /* ProjectItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectItem.swift; sourceTree = "<group>"; };
+		9C9B343D248CD3A200D67678 /* AmountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountView.swift; sourceTree = "<group>"; };
 		9CF789DA248205E0006423D9 /* ProjectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectTableViewCell.swift; sourceTree = "<group>"; };
 		9CF789DE24824734006423D9 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		D12242FB17D69F30F0CCAF01 /* Pods-JiZM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JiZM.debug.xcconfig"; path = "Target Support Files/Pods-JiZM/Pods-JiZM.debug.xcconfig"; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				9C934EDB2481372E00F4730A /* DetailView.swift */,
+				9C9B343D248CD3A200D67678 /* AmountView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -583,6 +586,7 @@
 				9C97A12E2480DF6D00844578 /* BillItem.swift in Sources */,
 				9C97A11C2480A0E300844578 /* FormViewController.swift in Sources */,
 				9C5703FC2484C2B0003B3EC6 /* MyTextField.swift in Sources */,
+				9C9B343E248CD3A200D67678 /* AmountView.swift in Sources */,
 				9C5704052484D660003B3EC6 /* Plist.swift in Sources */,
 				9C97A12A2480A15300844578 /* MoreFuncViewController.swift in Sources */,
 				9C97A0EE24809AD800844578 /* JiZM.xcdatamodeld in Sources */,

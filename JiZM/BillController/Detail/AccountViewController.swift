@@ -12,8 +12,8 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     var tabelView: UITableView!
     
-    var accountItems: Dictionary<String,Array<AccountItem>> = ["现金":[AccountItem(name: "钱包", category: "现金", initialAmount: 1500.0, isShowTotalAmount: true, imageName: "0.circle")],"银行卡":[AccountItem(name: "生活费", category: "银行卡", initialAmount: 1000.0, isShowTotalAmount: true, imageName: "01.circle")],"线上交易":[AccountItem(name: "支付宝", category: "线上交易", initialAmount: 10000.0, isShowTotalAmount: true, imageName: "02.circle"),AccountItem(name: "微信", category: "线上交易", initialAmount: 1234.0, isShowTotalAmount: false, imageName: "03.circle")]]
-    var accountCategory = ["现金", "银行卡", "线上交易"]
+    var accountItems: Dictionary<String,Array<AccountItem>> = Dictionary()
+    var accountCategory:[String] = []
     
     // MARK: - lifeStyle
     init() {
@@ -31,6 +31,7 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.getAccountData()
         self.creatViews()
         tabelView.delegate = self
         tabelView.dataSource = self
@@ -117,6 +118,57 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
         }
     }
+    
+    func getAccountData()  {
+        self.accountItems.removeAll()
+        self.accountCategory.removeAll()
+        let datas = AccountItem.searchAccounts()
+        for account in datas {
+            switch account.category {
+            case "现金":
+                if self.accountItems.keys.contains("现金") {
+                    var keysValue = accountItems["现金"]!
+                    keysValue.append(account)
+                } else {
+                    self.accountItems["现金"] = [account]
+                }
+            case "银行":
+                if self.accountItems.keys.contains("银行") {
+                    var keysValue = accountItems["银行"]!
+                    keysValue.append(account)
+                } else {
+                    self.accountItems["银行"] = [account]
+                }
+            case "信用卡":
+                if self.accountItems.keys.contains("信用卡") {
+                    var keysValue = accountItems["信用卡"]!
+                    keysValue.append(account)
+                } else {
+                    self.accountItems["信用卡"] = [account]
+                }
+            case "线上支付":
+                if self.accountItems.keys.contains("线上支付") {
+                    var keysValue = accountItems["线上支付"]!
+                    keysValue.append(account)
+                } else {
+                    self.accountItems["线上支付"] = [account]
+                }
+            case "其他":
+                if self.accountItems.keys.contains("其他") {
+                    var keysValue = accountItems["其他"]!
+                    keysValue.append(account)
+                } else {
+                    self.accountItems["其他"] = [account]
+                }
+            default:
+                break
+            }
+        }
+        for key in self.accountItems.keys {
+            self.accountCategory.append(key)
+        }
+    }
+    
     
     
 }

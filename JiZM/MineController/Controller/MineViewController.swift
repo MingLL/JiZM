@@ -8,18 +8,23 @@
 
 import UIKit
 import Foundation
-import Charts
 import SnapKit
-
+import AAInfographics
 
 class MineViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
-    
-    var chartView: BarChartView!
+    var amountView: AmountView!
+    var chartView: AAChartView!
     var tabelView: UITableView!
     
     var accountItems: Dictionary<String,Array<AccountItem>> = Dictionary()
     var accountCategory: [String] = []
+    
+    var billItems: [BillItem] = []
+    
+    var allAccountAmount: Float = 0.0
+    
+    
     
     // MARK: - lifeStyle
     init() {
@@ -27,6 +32,7 @@ class MineViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         self.tabBarItem.image = UIImage(systemName: "person")
         self.tabBarItem.title = "帐户总览"
         self.navigationItem.title = "帐户总览"
+        self.view.backgroundColor = .white
         self.edgesForExtendedLayout = UIRectEdge.init(rawValue: 0)
         self.tabBarController?.edgesForExtendedLayout = UIRectEdge.init(rawValue: 0)
     }
@@ -37,30 +43,42 @@ class MineViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.creatViews()
         self.getAccountData()
+        self.getBillData()
+        self.creatViews()
+        self.setUpCharts()
         tabelView.delegate = self
         tabelView.dataSource = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
         self.getAccountData()
+        self.getBillData()
+        
         self.tabelView.reloadData()
+        print("")
     }
     
     func creatViews() {
-        self.chartView = BarChartView.init(frame: .zero)
+        self.amountView = AmountView(frame: .zero)
+        self.chartView = AAChartView(frame: .zero)
         self.tabelView = UITableView.init(frame: .zero)
-        self.chartView.backgroundColor = .red
-        self.tabelView.backgroundColor = .green
+        self.view.addSubview(self.amountView)
         self.view.addSubview(chartView)
         self.view.addSubview(tabelView)
+        self.amountView.amountLabel.text = String(self.allAccountAmount)
+        amountView.snp.makeConstraints { (make) in
+            make.top.equalToSuperview().offset(5)
+            make.centerX.equalToSuperview()
+            make.width.equalTo(200)
+            make.height.equalTo(50)
+        }
         
         chartView.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(10)
+            make.top.equalTo(self.amountView.snp.bottom).offset(5)
             make.left.equalToSuperview().offset(10)
             make.right.equalToSuperview().offset(-10)
-            make.height.equalTo(300)
+            make.height.equalTo(200)
         }
         
         tabelView.snp.makeConstraints { (make) in
@@ -71,6 +89,59 @@ class MineViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             
         }
     }
+    
+    
+    func setUpCharts() {
+        var payDic: Dictionary<Int, Float> = Dictionary()
+        var incomeDic: Dictionary<Int, Float> = Dictionary()
+        var payArray: [Float] = []
+        var incomeArray: [Float] = []
+        for i in 1...12 {
+            payDic[i] = 0.0
+            incomeDic[i] = 0.0
+        }
+        for bill in self.billItems {
+            let date = bill.date
+            let calendar = Calendar.current
+            let month = calendar.component(.month, from: date)
+            if bill.status == "支出" {
+                var temp =  payDic[month]!
+                temp += bill.price
+                payDic[month] = temp
+            } else {
+                var temp =  incomeDic[month]!
+                temp += bill.price
+                incomeDic[month] = temp
+            }
+        }
+        
+        for i in 1...12 {
+            let payValue = payDic[i]
+            let incomeValue = incomeDic[i]
+            payArray.append(payValue!)
+            incomeArray.append(incomeValue!)
+        }
+        
+        let chartModel = AAChartModel()
+            .title("收支关系图")
+            .chartType(.column)//图表类型
+            .inverted(false)//是否翻转图形
+            .yAxisTitle("金额")// Y 轴标题
+            .legendEnabled(true)//是否启用图表的图例(图表底部的可点击的小圆点)
+            .tooltipValueSuffix("¥")//浮动提示框单位后缀
+            .categories(["一月", "二月", "三月", "四月", "五月","六月","七月","八月","九月","十月","十一月","十二月"]).zoomType(.x)
+            .colorsTheme(["#fe117c","#ffc069"])//主题颜色数组
+            .series([
+                AASeriesElement()
+                    .name("支出")
+                    .data(payArray).toDic()!,
+                AASeriesElement()
+                    .name("收入")
+                    .data(incomeArray)
+                    .toDic()!])
+        chartView.aa_drawChartWithChartModel(chartModel)
+    }
+    
     
     
     // MARK: - tableViewDelegate
@@ -145,9 +216,14 @@ class MineViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     }
     
     func getAccountData()  {
+        self.allAccountAmount = 0.0
         self.accountItems.removeAll()
+        self.accountCategory.removeAll()
         let datas = AccountItem.searchAccounts()
         for account in datas {
+            if account.isShowTotalAmount {
+                allAccountAmount += account.amount
+            }
             switch account.category {
             case "现金":
                 if self.accountItems.keys.contains("现金") {
@@ -192,5 +268,21 @@ class MineViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             self.accountCategory.append(key)
         }
     }
+    
+    func getBillData() {
+        for key in accountItems.keys {
+            let keyValue = accountItems[key]!
+            for value in keyValue {
+                if value.isShowTotalAmount {
+                    let bills = AccountItem.seachBillsFromAccount(accountItem: value)
+                    for bill in bills {
+                        self.billItems.append(bill)
+                    }
+                }
+            }
+        }
+    }
+    
+    
     
 }

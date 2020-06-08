@@ -68,8 +68,8 @@ class AccountItem {
         let app = UIApplication.shared.delegate as! AppDelegate
         let context = app.persistentContainer.viewContext
         let request = NSFetchRequest<Account>.init(entityName: "Account")
-        let asyncFetchRequest = NSAsynchronousFetchRequest(fetchRequest: request) { (result : NSAsynchronousFetchResult!) in
-            let fetchObjects:[Account] = result.finalResult!
+        do{
+            let fetchObjects = try context.fetch(request)
             for account in fetchObjects {
                 let accountItem = AccountItem()
                 accountItem.name = account.name!
@@ -80,10 +80,7 @@ class AccountItem {
                 accountItem.amount = account.amount
                 AccountItems.append(accountItem)
             }
-        }
-        
-        do {
-            try context.execute(asyncFetchRequest)
+            
         } catch {
             print("error")
         }
@@ -100,5 +97,27 @@ class AccountItem {
         account.initialAmount = accountItem.initialAmount
         account.isShowTotalAmount = accountItem.isShowTotalAmount
         app.saveContext()
+    }
+    
+    static func seachBillsFromAccount(accountItem:AccountItem) -> [BillItem] {
+        var billItems: [BillItem] = []
+        let account = AccountItem.searchAccount(accountItme: accountItem)
+        if let bills = account.account_bill {
+            for bill in bills as NSSet {
+                let billItem = BillItem()
+                billItem.name = (bill as! Bill).name!
+                billItem.account = AccountItem.toAccountItme(account: account)
+                billItem.category = (bill as! Bill).category!
+                billItem.date = (bill as! Bill).date!
+                billItem.imageName = (bill as! Bill).imageName!
+                billItem.price = (bill as! Bill).price
+                billItem.remark = (bill as! Bill).remark!
+                billItem.shop = (bill as! Bill).shop!
+                billItem.tag = (bill as! Bill).tag!
+                billItem.status = (bill as! Bill).status!
+                billItems.append(billItem)
+            }
+        }
+       return billItems
     }
 }

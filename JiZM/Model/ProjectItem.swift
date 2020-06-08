@@ -16,7 +16,20 @@ class ProjectItem {
     var beginDate: Date
     var endDate: Date
     var imageName: String
-    var status: String
+    var status: String {
+        get {
+            let nowDate = Date()
+            if self.beginDate.compare(nowDate) == .orderedAscending {
+                if self.endDate.compare(nowDate) == .orderedDescending {
+                    return "进行中"
+                } else {
+                    return "已结束"
+                }
+            } else {
+                return "未开始"
+            }
+        }
+    }
     var totalAmount: Float
     var amount: Float
     
@@ -27,7 +40,6 @@ class ProjectItem {
         self.endDate = endDate
         self.totalAmount = totalAmount
         self.imageName = imageName
-        self.status = ""
         self.amount = 0.0
     }
     
@@ -37,7 +49,6 @@ class ProjectItem {
         self.endDate = Date()
         self.totalAmount = 0.0
         self.imageName = ""
-        self.status = ""
         self.amount = 0.0
     }
     
@@ -77,8 +88,8 @@ class ProjectItem {
         let app = UIApplication.shared.delegate as! AppDelegate
         let context = app.persistentContainer.viewContext
         let request = NSFetchRequest<Project>.init(entityName: "Project")
-        let asyncFetchRequest = NSAsynchronousFetchRequest(fetchRequest: request) { (result : NSAsynchronousFetchResult!) in
-            let fetchObjects:[Project] = result.finalResult!
+        do {
+            let fetchObjects = try context.fetch(request)
             for project in fetchObjects {
                 let projectItem = ProjectItem()
                 projectItem.name = project.name!
@@ -86,12 +97,9 @@ class ProjectItem {
                 projectItem.endDate = project.endDate!
                 projectItem.imageName = project.imageName!
                 projectItem.amount = project.amount
+                projectItem.totalAmount = project.totalAmount
                 projectItems.append(projectItem)
             }
-        }
-        
-        do {
-            try context.execute(asyncFetchRequest)
         } catch {
             print("error")
         }
@@ -106,7 +114,8 @@ class ProjectItem {
         project.imageName = projectItem.imageName
         project.beginDate = projectItem.beginDate
         project.endDate = projectItem.endDate
-        
+        project.totalAmount = projectItem.totalAmount
+        project.status = projectItem.status
         app.saveContext()
     }
 }

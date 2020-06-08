@@ -12,7 +12,7 @@ class ProjectViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     var tableView: UITableView!
     
-    var projectItems: Dictionary<String,Array<ProjectItem>> = ["进行中":[ProjectItem(name: "生活消费", beginDate: Date(), endDate: Date(timeIntervalSinceNow: 86400), totalAmount: 1500.0, imageName: "03.circle")]]
+    var projectItems: Dictionary<String,Array<ProjectItem>> = Dictionary()
     
     var projectCategory:[String] = ["进行中", "未开始", "已结束"]
     // MARK: - lifeStyle
@@ -33,6 +33,7 @@ class ProjectViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.getProjectDatas()
         self.setUpViews()
     }
     
@@ -91,6 +92,37 @@ class ProjectViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
         }
 
+    }
+    
+    func getProjectDatas() {
+        let datas = ProjectItem.searchProjects()
+        for project in datas {
+            switch project.status {
+            case projectCategory[0]:
+                if self.projectItems["进行中"] != nil {
+                    var keyValue = self.projectItems["进行中"]
+                    keyValue!.append(project)
+                } else {
+                    self.projectItems["进行中"] = [project]
+                }
+            case projectCategory[1]:
+                if self.projectItems["未开始"] != nil {
+                    var keyValue = self.projectItems["未开始"]
+                    keyValue!.append(project)
+                } else {
+                    self.projectItems["未开始"] = [project]
+                }
+            case projectCategory[2]:
+                if self.projectItems["已结束"] != nil {
+                    var keyValue = self.projectItems["已结束"]
+                    keyValue!.append(project)
+                } else {
+                    self.projectItems["已结束"] = [project]
+                }
+            default:
+                print("error")
+            }
+        }
     }
     
     

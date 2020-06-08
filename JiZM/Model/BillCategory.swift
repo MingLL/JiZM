@@ -10,5 +10,4 @@ import Foundation
 class BillCategory {
     var name: String?
     var status: Int?
-    
 }
