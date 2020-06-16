@@ -9,10 +9,10 @@
 import Foundation
 
 class Plist {
-    static func readAccountCategoryPlist() {
+    static func readAccountCategoryPlist() -> [String] {
         let accountCategory: String = Bundle.main.path(forResource: "AccountCategory", ofType: "plist") ?? ""
         let data: NSMutableArray = NSMutableArray.init(contentsOfFile: accountCategory)!
-        print(data)
+        return data as! [String] 
     }
     
     static func readBillCategoryPlist() -> Dictionary<String,Any> {

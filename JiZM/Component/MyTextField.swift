@@ -16,7 +16,7 @@ class MyTextField: UITextField {
         self.layer.borderColor = UIColor.gray.cgColor
         self.layer.borderWidth = 0.5
         self.layer.cornerRadius = 5
-        self.textColor = UIColor.white
+        self.textColor = UIColor.black
     }
     
     required init?(coder: NSCoder) {

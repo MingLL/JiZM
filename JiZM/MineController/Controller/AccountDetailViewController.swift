@@ -1,36 +1,32 @@
 //
-//  FormViewController.swift
+//  AccountDetailViewController.swift
 //  JiZM
 //
-//  Created by MingL L on 2020/5/29.
+//  Created by MingL L on 2020/6/15.
 //  Copyright © 2020 MingL L. All rights reserved.
 //
 
 import UIKit
 import SwiftTTPageController
-import SnapKit
 
-
-class FormViewController: UIViewController, TTHeadViewDelegate, TTPageViewControllerDelegate{
-    func tt_headViewSelectedAt(_ index: Int) {
-        pagevc.scrollToPageAtIndex(index)
-    }
+class AccountDetailViewController: UIViewController, TTHeadViewDelegate, TTPageViewControllerDelegate {
+      func tt_headViewSelectedAt(_ index: Int) {
+          pagevc.scrollToPageAtIndex(index)
+      }
+      
+      func tt_pageControllerSelectedAt(_ index: Int) {
+          headView.scrollToItemAtIndex(index)
+      }
     
-    func tt_pageControllerSelectedAt(_ index: Int) {
-        headView.scrollToItemAtIndex(index)
-    }
+    var headView: TTHeadView!
+    var pagevc: TTPageViewController!
     
+    let account: AccountItem!
     
-   
-    var headView:TTHeadView!
-    var pagevc:TTPageViewController!
-    
-    
-    init() {
+    init(account: AccountItem) {
+        self.account = account
         super.init(nibName: nil, bundle: nil)
-        self.tabBarItem.image = UIImage(systemName: "chart.pie", withConfiguration: UIImage.SymbolConfiguration(weight: .regular))
-        self.tabBarItem.title = "报表"
-        self.navigationItem.title = "报表"
+        self.navigationItem.title = self.account.name
         self.edgesForExtendedLayout = UIRectEdge.init(rawValue: 0)
         self.tabBarController?.edgesForExtendedLayout = UIRectEdge.init(rawValue: 0)
     }
@@ -42,11 +38,11 @@ class FormViewController: UIViewController, TTHeadViewDelegate, TTPageViewContro
     override func viewDidLoad() {
         super.viewDidLoad()
         self.creatViews()
-
+        // Do any additional setup after loading the view.
     }
     
     func creatViews() {
-        let titles: [String] = ["总览", "明细", "类别", "排行"]
+        let titles: [String] = ["交易明细", "账户信息"]
         var attri = TTHeadTextAttribute()
         attri.itemWidth = self.view.bounds.width / CGFloat(titles.count)
         attri.needBottomLine = true
@@ -54,7 +50,7 @@ class FormViewController: UIViewController, TTHeadViewDelegate, TTPageViewContro
         self.view.addSubview(self.headView)
         self.headView.backgroundColor = .white
         
-        let vcs: [UIViewController] = [AllFormViewController(),DetailFormiewController(),CategoryFormViewController(),RankViewController()]
+        let vcs: [UIViewController] = [TransactionViewController(account: self.account),DetailViewController(account: self.account)]
         self.pagevc = TTPageViewController.init(controllers: vcs, frame: .zero, delegate: self)
         self.addChild(pagevc)
         self.view.addSubview(pagevc.view)
@@ -63,6 +59,5 @@ class FormViewController: UIViewController, TTHeadViewDelegate, TTPageViewContro
             make.left.right.bottom.equalToSuperview()
         }
     }
-    
-   
+
 }

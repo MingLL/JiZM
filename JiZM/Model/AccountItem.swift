@@ -87,6 +87,31 @@ class AccountItem {
         return AccountItems
     }
     
+    static func updataAccount(accountItem: AccountItem) {
+        let account: Account
+        let app = UIApplication.shared.delegate as! AppDelegate
+        let context = app.persistentContainer.viewContext
+        
+        let  request = NSFetchRequest<Account>.init(entityName: "Account")
+        let predicate = NSPredicate(format: "name = %@", accountItem.name)
+        request.predicate = predicate
+        
+        do {
+            let fetchedObjects = try context.fetch(request)
+            account = fetchedObjects.first!
+            account.name = accountItem.name
+            account.category = accountItem.category
+            account.amount = accountItem.amount
+            account.imageName = accountItem.imageName
+            account.initialAmount = accountItem.initialAmount
+            account.isShowTotalAmount = accountItem.isShowTotalAmount
+            app.saveContext()
+        } catch {
+            fatalError("更新错误：\(error)")
+        }
+        
+    }
+    
     static func saveAccount(accountItem: AccountItem) {
         let app = UIApplication.shared.delegate as! AppDelegate
         let account = NSEntityDescription.insertNewObject(forEntityName: "Account", into: app.persistentContainer.viewContext) as! Account
@@ -99,7 +124,7 @@ class AccountItem {
         app.saveContext()
     }
     
-    static func seachBillsFromAccount(accountItem:AccountItem) -> [BillItem] {
+    static func seachBillsFromAccount(accountItem: AccountItem) -> [BillItem] {
         var billItems: [BillItem] = []
         let account = AccountItem.searchAccount(accountItme: accountItem)
         if let bills = account.account_bill {
@@ -119,5 +144,23 @@ class AccountItem {
             }
         }
        return billItems
+    }
+    
+    static func deleteAccount(accountItem: AccountItem) {
+        let account: Account
+        let app = UIApplication.shared.delegate as! AppDelegate
+        let context = app.persistentContainer.viewContext
+        
+        let  request = NSFetchRequest<Account>.init(entityName: "Account")
+        let predicate = NSPredicate(format: "name = %@", accountItem.name)
+        request.predicate = predicate
+        do {
+            let fetchedObjects = try context.fetch(request)
+            account = fetchedObjects.first!
+            context.delete(account)
+            try context.save()
+        } catch {
+            print("删除错我")
+        }
     }
 }

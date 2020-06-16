@@ -102,6 +102,7 @@ class ProjectViewController: UIViewController, UITableViewDelegate, UITableViewD
                 if self.projectItems["进行中"] != nil {
                     var keyValue = self.projectItems["进行中"]
                     keyValue!.append(project)
+                    self.projectItems["进行中"] = keyValue
                 } else {
                     self.projectItems["进行中"] = [project]
                 }
@@ -109,6 +110,7 @@ class ProjectViewController: UIViewController, UITableViewDelegate, UITableViewD
                 if self.projectItems["未开始"] != nil {
                     var keyValue = self.projectItems["未开始"]
                     keyValue!.append(project)
+                    self.projectItems["未开始"] = keyValue
                 } else {
                     self.projectItems["未开始"] = [project]
                 }
@@ -116,6 +118,7 @@ class ProjectViewController: UIViewController, UITableViewDelegate, UITableViewD
                 if self.projectItems["已结束"] != nil {
                     var keyValue = self.projectItems["已结束"]
                     keyValue!.append(project)
+                    self.projectItems["已结束"] = keyValue
                 } else {
                     self.projectItems["已结束"] = [project]
                 }

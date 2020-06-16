@@ -129,6 +129,7 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
                 if self.accountItems.keys.contains("现金") {
                     var keysValue = accountItems["现金"]!
                     keysValue.append(account)
+                    accountItems["现金"] = keysValue
                 } else {
                     self.accountItems["现金"] = [account]
                 }
@@ -136,6 +137,7 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
                 if self.accountItems.keys.contains("银行") {
                     var keysValue = accountItems["银行"]!
                     keysValue.append(account)
+                    accountItems["银行"] = keysValue
                 } else {
                     self.accountItems["银行"] = [account]
                 }
@@ -143,6 +145,7 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
                 if self.accountItems.keys.contains("信用卡") {
                     var keysValue = accountItems["信用卡"]!
                     keysValue.append(account)
+                    accountItems["信用卡"] = keysValue
                 } else {
                     self.accountItems["信用卡"] = [account]
                 }
@@ -150,6 +153,7 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
                 if self.accountItems.keys.contains("线上支付") {
                     var keysValue = accountItems["线上支付"]!
                     keysValue.append(account)
+                    accountItems["线上支付"] = keysValue
                 } else {
                     self.accountItems["线上支付"] = [account]
                 }
@@ -157,6 +161,7 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
                 if self.accountItems.keys.contains("其他") {
                     var keysValue = accountItems["其他"]!
                     keysValue.append(account)
+                    accountItems["其他"] = keysValue
                 } else {
                     self.accountItems["其他"] = [account]
                 }

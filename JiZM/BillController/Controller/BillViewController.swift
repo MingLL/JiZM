@@ -9,16 +9,22 @@
 import UIKit
 import FSCalendar
 
-class BillViewController: UIViewController, FSCalendarDelegate,FSCalendarDataSource,UITableViewDelegate, UITableViewDataSource {
+class BillViewController: UIViewController, FSCalendarDelegate,FSCalendarDataSource,FSCalendarDelegateAppearance, UITableViewDelegate, UITableViewDataSource {
     
     
     var calendar: FSCalendar!
+    
+    
     
     var tableView: UITableView!
     
     var addBillButton: UIButton!
     
-    var billItems: [BillItem] = [BillItem(price: 150.0, name: "午餐", status: "收入", category: "餐饮", account: AccountItem(name: "生活费", category: "线上支付", initialAmount: 1500.0, isShowTotalAmount: true, imageName: ""), project: ProjectItem(name: "生活消费", beginDate: Date(), endDate:Date(timeIntervalSinceNow: 86400) , totalAmount: 1500.0, imageName: ""), shop: "", date: Date(), tag: "", remark: "", imageName: "0.circle")]
+    var billItems: [BillItem] = []
+    
+    var currentBills: [BillItem] = []
+    
+    var currentDate: Date = Date()
     
     init() {
         self.calendar = FSCalendar(frame: .zero)
@@ -38,9 +44,34 @@ class BillViewController: UIViewController, FSCalendarDelegate,FSCalendarDataSou
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.getBillDatas()
+        self.getCurrentBills()
         self.creatCalendar()
         self.creatTableView()
         self.creatButton()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.getBillDatas()
+        self.getCurrentBills()
+        self.tableView.reloadData()
+        self.calendar.reloadData()
+        NotificationCenter.default.addObserver(self, selector: #selector(BillViewController.isWarning(isWarning:)), name: NSNotification.Name(rawValue: "Warningprompt"), object: nil)
+        
+    }
+    
+    func getBillDatas() {
+        self.billItems = BillItem.searchBills()
+    }
+    
+    func getCurrentBills() {
+        self.currentBills.removeAll()
+        for bill in self.billItems {
+            let date = bill.date
+            if Calendar.current.isDate(date, inSameDayAs: self.currentDate) {
+                self.currentBills.append(bill)
+            }
+        }
     }
     
     func creatTableView() {
@@ -92,7 +123,7 @@ class BillViewController: UIViewController, FSCalendarDelegate,FSCalendarDataSou
     }
     
     @objc func clickButton() {
-        let newBillVC = NewBillViewController(date: Date())
+        let newBillVC = NewBillViewController(date: self.currentDate)
         newBillVC.modalPresentationStyle = .fullScreen
         self.present(newBillVC, animated: true, completion: nil)
     }
@@ -100,7 +131,7 @@ class BillViewController: UIViewController, FSCalendarDelegate,FSCalendarDataSou
     
     //MARK: - tableView delegate and dataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return billItems.count
+        return currentBills.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -109,7 +140,8 @@ class BillViewController: UIViewController, FSCalendarDelegate,FSCalendarDataSou
         if cell == nil {
             cell = BillTableViewCell(style: .default, reuseIdentifier: cellID)
         }
-        let bill = billItems[indexPath.row]
+        
+        let bill = currentBills[indexPath.row]
         cell?.setBillItemForCell(bill: bill)
         return cell!
     }
@@ -118,6 +150,50 @@ class BillViewController: UIViewController, FSCalendarDelegate,FSCalendarDataSou
         return 70
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCell.EditingStyle.delete{
+            //移除选定的数据
+            BillItem.deleteBill(billItem: currentBills[indexPath.row])
+            currentBills.remove(at: indexPath.row)
+            //增加删除动画
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            
+        }
+    }
     
+    
+    //MARK: -FSCalendar
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        self.currentDate = date
+        self.currentBills.removeAll()
+        self.getCurrentBills()
+        self.tableView.reloadData()
+    }
+    
+    func calendar(_ calendar: FSCalendar, titleFor date: Date) -> String? {
+        if Calendar.current.isDateInToday(date) {
+            return "今"
+        }
+        return nil
+    }
+    
+    func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
+        for bill in self.billItems {
+            if Calendar.current.isDate(bill.date, inSameDayAs: date) {
+                return 3
+            }
+        }
+        return 0
+    }
+    
+    @objc func isWarning(isWarning: NSNotification) {
+        if let isW = isWarning.object as? Bool {
+            if isW {
+                DispatchQueue.main.async {
+                    UIAlertController.showAlert(message: "已经消费预算的75%，请谨慎消费", in: self)
+                }
+            }
+        }
+    }
     
 }

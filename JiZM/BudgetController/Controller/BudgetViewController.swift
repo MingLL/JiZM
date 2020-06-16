@@ -46,6 +46,8 @@ class BudgetViewController: UIViewController,UITableViewDelegate,UITableViewData
     }
     
     func setUpViews() {
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .done, target: self, action: #selector(BudgetViewController.rightBtnClick))
         self.tableView.backgroundColor = UIColor.clear
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -91,7 +93,22 @@ class BudgetViewController: UIViewController,UITableViewDelegate,UITableViewData
         return 60
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCell.EditingStyle.delete{
+            //移除选定的数据
+            let key =  projectCategory[indexPath.section]
+            var keyValue = projectItems[key]!
+            ProjectItem.deleteProject(projectItem: keyValue[indexPath.row])
+            keyValue.remove(at: indexPath.row)
+            //增加删除动画
+            projectItems[key] = keyValue
+            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+    }
+    
+    
     func getProjectDatas() {
+        self.projectItems.removeAll()
         let datas = ProjectItem.searchProjects()
         for project in datas {
             switch project.status {
@@ -99,6 +116,7 @@ class BudgetViewController: UIViewController,UITableViewDelegate,UITableViewData
                 if self.projectItems["进行中"] != nil {
                     var keyValue = self.projectItems["进行中"]
                     keyValue!.append(project)
+                    self.projectItems["进行中"] = keyValue
                 } else {
                     self.projectItems["进行中"] = [project]
                 }
@@ -106,6 +124,7 @@ class BudgetViewController: UIViewController,UITableViewDelegate,UITableViewData
                 if self.projectItems["未开始"] != nil {
                     var keyValue = self.projectItems["未开始"]
                     keyValue!.append(project)
+                    self.projectItems["未开始"] = keyValue
                 } else {
                     self.projectItems["未开始"] = [project]
                 }
@@ -113,6 +132,7 @@ class BudgetViewController: UIViewController,UITableViewDelegate,UITableViewData
                 if self.projectItems["已结束"] != nil {
                     var keyValue = self.projectItems["已结束"]
                     keyValue!.append(project)
+                    self.projectItems["已结束"] = keyValue
                 } else {
                     self.projectItems["已结束"] = [project]
                 }
@@ -122,5 +142,9 @@ class BudgetViewController: UIViewController,UITableViewDelegate,UITableViewData
         }
     }
     
+    @objc func rightBtnClick() {
+        let NewBudgetVC = NewBudgetViewController()
+        self.navigationController?.pushViewController(NewBudgetVC, animated: true)
+    }
     
 }

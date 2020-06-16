@@ -30,7 +30,7 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     var incomeButton: UIButton!
     
-    var categoryLabel: UILabel!
+    var categoryLabel: MyLabel!
     
     var categoryString: String!
     
@@ -43,16 +43,15 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
     func setUpViews()  {
         self.payButton = UIButton(frame: .zero)
         self.incomeButton = UIButton(frame: .zero)
-        self.payButton.setTitle("收入", for: .normal)
-        self.incomeButton.setTitle("支出", for: .normal)
+        self.payButton.setTitle("支出", for: .normal)
+        self.incomeButton.setTitle("收入", for: .normal)
         self.payButton.setTitleColor(.black, for: .normal)
         self.incomeButton.setTitleColor(.black, for: .normal)
         self.payButton.setTitleColor(.red, for: .selected)
         self.incomeButton.setTitleColor(.red, for: .selected)
         self.payButton.isSelected = true
-        self.categoryLabel = UILabel(frame: .zero)
-        self.categoryLabel.text = "早餐"
-        
+        self.categoryLabel = MyLabel(frame: .zero)
+                
         
         payLayout = UICollectionViewFlowLayout()
         payLayout.itemSize = CGSize(width: 50, height: 50)
@@ -66,6 +65,10 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
         incomeLayout.scrollDirection = .vertical
         self.payCollectionView = UICollectionView(frame: .zero, collectionViewLayout: payLayout)
         self.incomeCollectionView = UICollectionView(frame: .zero, collectionViewLayout: incomeLayout)
+        
+        
+        self.payCollectionView.backgroundColor = .white
+        self.incomeCollectionView.backgroundColor = .white
         self.payCollectionView.tag = 100001
         self.incomeCollectionView.tag = 100002
         
@@ -78,10 +81,10 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
         self.incomeCollectionView.dataSource = self
         
         
-        self.payCollectionView.register(UINib(nibName: "CategoryCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: payCellID)
+        self.payCollectionView.register(CategoryCollectionViewCell.self, forCellWithReuseIdentifier: payCellID)
         
         
-        self.incomeCollectionView.register(UINib(nibName: "CategoryCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: incomeCellID)
+        self.incomeCollectionView.register(CategoryCollectionViewCell.self, forCellWithReuseIdentifier: incomeCellID)
         
         
         self.view.addSubview(self.payButton)
@@ -188,17 +191,11 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
         
         if collectionView.tag == 100001 {
             let cell: CategoryCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: payCellID, for: indexPath) as! CategoryCollectionViewCell
-            cell.label.text = payDatas[indexPath.row].name
-            cell.label.font = UIFont.systemFont(ofSize: 14)
-            cell.label.numberOfLines = 0
-            cell.backgroundColor = .green
+            cell.setUpCell(string: payDatas[indexPath.row].name!, color: UIColor(0xF08080))
             return cell
         } else {
             let cell: CategoryCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: incomeCellID, for: indexPath) as! CategoryCollectionViewCell
-            cell.label.text = incomeDatas[indexPath.row]
-            cell.label.font = UIFont.systemFont(ofSize: 14)
-            cell.label.numberOfLines = 0
-            cell.backgroundColor = .red
+            cell.setUpCell(string: incomeDatas[indexPath.row], color: UIColor(0x90EE90))
             return cell
         }
     }
@@ -243,7 +240,9 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
                     self.payButton.removeFromSuperview()
                     self.incomeButton.removeFromSuperview()
                     self.categoryLabel.text = payDatas[indexPath.row].name
-                    categoryLabel.textColor = .red
+                
+                    self.categoryLabel.textInsets = UIEdgeInsets(top: 3, left: 6, bottom: 3, right: 6)
+                    self.categoryLabel.setLabelColor(color: UIColor(0xF08080))
                     self.view.addSubview(self.categoryLabel)
                     self.categoryLabel.snp.makeConstraints { (make) in
                         make.top.equalToSuperview().offset(3)
@@ -255,7 +254,20 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
             }
             
         } else {
-            
+            self.categoryString = incomeDatas[indexPath.row]
+            collectionView.removeFromSuperview()
+            self.payButton.removeFromSuperview()
+            self.incomeButton.removeFromSuperview()
+            self.categoryLabel.text = incomeDatas[indexPath.row]
+            self.categoryLabel.textInsets = UIEdgeInsets(top: 3, left: 6, bottom: 3, right: 6)
+            self.categoryLabel.setLabelColor(color: UIColor(0x90EE90))
+            self.view.addSubview(self.categoryLabel)
+            self.categoryLabel.snp.makeConstraints { (make) in
+                make.top.equalToSuperview().offset(3)
+                make.left.equalToSuperview().offset(20)
+                make.height.equalTo(50)
+                make.width.equalTo(50)
+            }
         }
     }
 }

@@ -73,6 +73,11 @@ class BillTableViewCell: UITableViewCell {
     func setBillItemForCell(bill: BillItem) {
         self.billImageView.image = UIImage(systemName: bill.imageName)
         self.nameLabel.text = bill.name
+        if bill.status == "支出" {
+            self.priceLabel.textColor = UIColor(0xDC143C)
+        } else {
+            self.priceLabel.textColor = UIColor(0x00FA9A)
+        }
         self.priceLabel.text = String(bill.price)
         self.accountLabel.text = bill.account.name
         self.accountLabel.setLabelColor(color: UIColor.red)
@@ -81,8 +86,6 @@ class BillTableViewCell: UITableViewCell {
             self.projectLabel.text = project.name
             self.projectLabel.setLabelColor(color: UIColor.orange)
             self.projectLabel.textInsets = UIEdgeInsets(top: 3, left: 6, bottom: 3, right: 6)
-        } else {
-            self.projectLabel.removeFromSuperview()
         }
     }
     

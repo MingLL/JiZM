@@ -7,14 +7,17 @@
 //
 
 import UIKit
+import SnapKit
 
 class MoreFuncViewController: UIViewController {
+
     
     init() {
         super.init(nibName: nil, bundle: nil)
         self.tabBarItem.image = UIImage(systemName: "slider.horizontal.3", withConfiguration: UIImage.SymbolConfiguration(weight: .regular))
         self.navigationItem.title = "更多功能"
-        
+        self.edgesForExtendedLayout = UIRectEdge.init(rawValue: 0)
+        self.tabBarController?.edgesForExtendedLayout = UIRectEdge.init(rawValue: 0)
     }
     
     required init?(coder: NSCoder) {
@@ -24,8 +27,7 @@ class MoreFuncViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
     }
     
 

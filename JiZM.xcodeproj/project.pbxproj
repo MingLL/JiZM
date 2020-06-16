@@ -3,11 +3,19 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 53;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9BA3596D9EB717870EF039D3 /* Pods_JiZM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D61210D8BDA2030D8AAE12BD /* Pods_JiZM.framework */; };
+		9C4A971024973BC20068A62F /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4A970F24973BC20068A62F /* CategoryCollectionViewCell.swift */; };
+		9C4A97162497A2DE0068A62F /* AccountDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4A97152497A2DE0068A62F /* AccountDetailViewController.swift */; };
+		9C4A97182497A4190068A62F /* TransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4A97172497A4190068A62F /* TransactionViewController.swift */; };
+		9C4A971A2497B7AE0068A62F /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4A97192497B7AE0068A62F /* UIAlertController.swift */; };
+		9C4A971C2497B8FF0068A62F /* NewBudgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4A971B2497B8FF0068A62F /* NewBudgetViewController.swift */; };
+		9C4B09FD2497CB9900C93210 /* EWDatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4B09FC2497CB9900C93210 /* EWDatePickerViewController.swift */; };
+		9C4B09FF2497CBA600C93210 /* EWDataPickerPresentAnimated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4B09FE2497CBA600C93210 /* EWDataPickerPresentAnimated.swift */; };
+		9C4B0A012497CBC300C93210 /* CommonHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4B0A002497CBC300C93210 /* CommonHelper.swift */; };
+		9C4B0A0324984F5900C93210 /* NewAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4B0A0224984F5900C93210 /* NewAccountViewController.swift */; };
 		9C5703F224849EE5003B3EC6 /* BillTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5703F124849EE5003B3EC6 /* BillTableViewCell.swift */; };
 		9C5703F524849F82003B3EC6 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5703F424849F82003B3EC6 /* UIColorExtension.swift */; };
 		9C5703F82484C0FA003B3EC6 /* NewBillViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5703F72484C0FA003B3EC6 /* NewBillViewController.swift */; };
@@ -19,8 +27,14 @@
 		9C57040A248520D4003B3EC6 /* ProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C570409248520D4003B3EC6 /* ProjectViewController.swift */; };
 		9C57041124863A53003B3EC6 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C57041024863A53003B3EC6 /* CategoryViewController.swift */; };
 		9C570413248646F3003B3EC6 /* BillCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C570412248646F3003B3EC6 /* BillCategory.swift */; };
-		9C57041824875206003B3EC6 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C57041624875206003B3EC6 /* CategoryCollectionViewCell.swift */; };
-		9C57041924875206003B3EC6 /* CategoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C57041724875206003B3EC6 /* CategoryCollectionViewCell.xib */; };
+		9C64FB65248FAB4000BD2925 /* JZWayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C64FB64248FAB4000BD2925 /* JZWayTableViewCell.swift */; };
+		9C64FB6824908D2E00BD2925 /* AllFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C64FB6724908D2E00BD2925 /* AllFormViewController.swift */; };
+		9C64FB6A24908ED800BD2925 /* DetailFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C64FB6924908ED800BD2925 /* DetailFormViewController.swift */; };
+		9C64FB6C24908EE800BD2925 /* CategoryFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C64FB6B24908EE800BD2925 /* CategoryFormViewController.swift */; };
+		9C64FB6E24908F1D00BD2925 /* RankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C64FB6D24908F1D00BD2925 /* RankViewController.swift */; };
+		9C6D11A12491D5B000329D61 /* CategoryAmount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6D11A02491D5B000329D61 /* CategoryAmount.swift */; };
+		9C8F346C2497C07E00279B79 /* Pods_JiZM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D61210D8BDA2030D8AAE12BD /* Pods_JiZM.framework */; };
+		9C8F346D2497C07E00279B79 /* Pods_JiZM.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D61210D8BDA2030D8AAE12BD /* Pods_JiZM.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9C934ED02480E68E00F4730A /* AccountCategory.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C934ECF2480E68E00F4730A /* AccountCategory.plist */; };
 		9C934ED62480E81100F4730A /* MyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C934ED52480E81100F4730A /* MyLabel.swift */; };
 		9C934ED9248135E100F4730A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C934ED8248135E100F4730A /* DetailViewController.swift */; };
@@ -42,6 +56,8 @@
 		9C97A1302480E0BD00844578 /* AccountItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C97A12F2480E0BD00844578 /* AccountItem.swift */; };
 		9C97A1332480E2AF00844578 /* ProjectItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C97A1322480E2AF00844578 /* ProjectItem.swift */; };
 		9C9B343E248CD3A200D67678 /* AmountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9B343D248CD3A200D67678 /* AmountView.swift */; };
+		9CAC76142490CBDF00B97893 /* CategoryFormCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAC76132490CBDF00B97893 /* CategoryFormCollectionViewCell.swift */; };
+		9CAC76162491070900B97893 /* RoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAC76152491070900B97893 /* RoundView.swift */; };
 		9CF789DB248205E0006423D9 /* ProjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF789DA248205E0006423D9 /* ProjectTableViewCell.swift */; };
 		9CF789DF24824734006423D9 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF789DE24824734006423D9 /* Date.swift */; };
 /* End PBXBuildFile section */
@@ -63,8 +79,31 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		9C8F346E2497C07E00279B79 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				9C8F346D2497C07E00279B79 /* Pods_JiZM.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		79A5B9A72498A364670FCAB1 /* Pods-JiZM.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JiZM.release.xcconfig"; path = "Target Support Files/Pods-JiZM/Pods-JiZM.release.xcconfig"; sourceTree = "<group>"; };
+		9C4A970F24973BC20068A62F /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		9C4A97152497A2DE0068A62F /* AccountDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailViewController.swift; sourceTree = "<group>"; };
+		9C4A97172497A4190068A62F /* TransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewController.swift; sourceTree = "<group>"; };
+		9C4A97192497B7AE0068A62F /* UIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertController.swift; sourceTree = "<group>"; };
+		9C4A971B2497B8FF0068A62F /* NewBudgetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBudgetViewController.swift; sourceTree = "<group>"; };
+		9C4B09FC2497CB9900C93210 /* EWDatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EWDatePickerViewController.swift; sourceTree = "<group>"; };
+		9C4B09FE2497CBA600C93210 /* EWDataPickerPresentAnimated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EWDataPickerPresentAnimated.swift; sourceTree = "<group>"; };
+		9C4B0A002497CBC300C93210 /* CommonHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonHelper.swift; sourceTree = "<group>"; };
+		9C4B0A0224984F5900C93210 /* NewAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAccountViewController.swift; sourceTree = "<group>"; };
 		9C5703F124849EE5003B3EC6 /* BillTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillTableViewCell.swift; sourceTree = "<group>"; };
 		9C5703F424849F82003B3EC6 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		9C5703F72484C0FA003B3EC6 /* NewBillViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBillViewController.swift; sourceTree = "<group>"; };
@@ -76,8 +115,12 @@
 		9C570409248520D4003B3EC6 /* ProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectViewController.swift; sourceTree = "<group>"; };
 		9C57041024863A53003B3EC6 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		9C570412248646F3003B3EC6 /* BillCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillCategory.swift; sourceTree = "<group>"; };
-		9C57041624875206003B3EC6 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
-		9C57041724875206003B3EC6 /* CategoryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryCollectionViewCell.xib; sourceTree = "<group>"; };
+		9C64FB64248FAB4000BD2925 /* JZWayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JZWayTableViewCell.swift; sourceTree = "<group>"; };
+		9C64FB6724908D2E00BD2925 /* AllFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllFormViewController.swift; sourceTree = "<group>"; };
+		9C64FB6924908ED800BD2925 /* DetailFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFormViewController.swift; sourceTree = "<group>"; };
+		9C64FB6B24908EE800BD2925 /* CategoryFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryFormViewController.swift; sourceTree = "<group>"; };
+		9C64FB6D24908F1D00BD2925 /* RankViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankViewController.swift; sourceTree = "<group>"; };
+		9C6D11A02491D5B000329D61 /* CategoryAmount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryAmount.swift; sourceTree = "<group>"; };
 		9C934ECF2480E68E00F4730A /* AccountCategory.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = AccountCategory.plist; sourceTree = "<group>"; };
 		9C934ED52480E81100F4730A /* MyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLabel.swift; sourceTree = "<group>"; };
 		9C934ED8248135E100F4730A /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -105,6 +148,8 @@
 		9C97A12F2480E0BD00844578 /* AccountItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountItem.swift; sourceTree = "<group>"; };
 		9C97A1322480E2AF00844578 /* ProjectItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectItem.swift; sourceTree = "<group>"; };
 		9C9B343D248CD3A200D67678 /* AmountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountView.swift; sourceTree = "<group>"; };
+		9CAC76132490CBDF00B97893 /* CategoryFormCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryFormCollectionViewCell.swift; sourceTree = "<group>"; };
+		9CAC76152491070900B97893 /* RoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundView.swift; sourceTree = "<group>"; };
 		9CF789DA248205E0006423D9 /* ProjectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectTableViewCell.swift; sourceTree = "<group>"; };
 		9CF789DE24824734006423D9 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		D12242FB17D69F30F0CCAF01 /* Pods-JiZM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JiZM.debug.xcconfig"; path = "Target Support Files/Pods-JiZM/Pods-JiZM.debug.xcconfig"; sourceTree = "<group>"; };
@@ -116,7 +161,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9BA3596D9EB717870EF039D3 /* Pods_JiZM.framework in Frameworks */,
+				9C8F346C2497C07E00279B79 /* Pods_JiZM.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,9 +202,7 @@
 		9C5703F024849EC4003B3EC6 /* List */ = {
 			isa = PBXGroup;
 			children = (
-				9C5703F124849EE5003B3EC6 /* BillTableViewCell.swift */,
-				9C57041624875206003B3EC6 /* CategoryCollectionViewCell.swift */,
-				9C57041724875206003B3EC6 /* CategoryCollectionViewCell.xib */,
+				9C4A970F24973BC20068A62F /* CategoryCollectionViewCell.swift */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -169,6 +212,7 @@
 			children = (
 				9CF789DE24824734006423D9 /* Date.swift */,
 				9C5703F424849F82003B3EC6 /* UIColorExtension.swift */,
+				9C4A97192497B7AE0068A62F /* UIAlertController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -191,13 +235,27 @@
 			path = Detail;
 			sourceTree = "<group>";
 		};
+		9C64FB66249087CC00BD2925 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				9CAC76132490CBDF00B97893 /* CategoryFormCollectionViewCell.swift */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
 		9C934ED42480E7CC00F4730A /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				9C4B0A002497CBC300C93210 /* CommonHelper.swift */,
+				9C4B09FC2497CB9900C93210 /* EWDatePickerViewController.swift */,
+				9C4B09FE2497CBA600C93210 /* EWDataPickerPresentAnimated.swift */,
 				9C934EDD24813A3500F4730A /* ItmeView.swift */,
 				9C934ED52480E81100F4730A /* MyLabel.swift */,
 				9C5703F92484C28C003B3EC6 /* MyButton.swift */,
 				9C5703FB2484C2B0003B3EC6 /* MyTextField.swift */,
+				9C64FB64248FAB4000BD2925 /* JZWayTableViewCell.swift */,
+				9CAC76152491070900B97893 /* RoundView.swift */,
+				9C5703F124849EE5003B3EC6 /* BillTableViewCell.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -305,6 +363,7 @@
 		9C97A1192480A07F00844578 /* FormController */ = {
 			isa = PBXGroup;
 			children = (
+				9C64FB66249087CC00BD2925 /* List */,
 				9C97A1262480A12B00844578 /* Controller */,
 			);
 			path = FormController;
@@ -333,6 +392,9 @@
 			children = (
 				9C934ED8248135E100F4730A /* DetailViewController.swift */,
 				9C97A1212480A11200844578 /* MineViewController.swift */,
+				9C4A97152497A2DE0068A62F /* AccountDetailViewController.swift */,
+				9C4A97172497A4190068A62F /* TransactionViewController.swift */,
+				9C4B0A0224984F5900C93210 /* NewAccountViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -341,6 +403,7 @@
 			isa = PBXGroup;
 			children = (
 				9C97A1242480A12500844578 /* BudgetViewController.swift */,
+				9C4A971B2497B8FF0068A62F /* NewBudgetViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -349,6 +412,10 @@
 			isa = PBXGroup;
 			children = (
 				9C97A11B2480A0E300844578 /* FormViewController.swift */,
+				9C64FB6724908D2E00BD2925 /* AllFormViewController.swift */,
+				9C64FB6924908ED800BD2925 /* DetailFormViewController.swift */,
+				9C64FB6B24908EE800BD2925 /* CategoryFormViewController.swift */,
+				9C64FB6D24908F1D00BD2925 /* RankViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -368,6 +435,7 @@
 				9C97A12D2480DF6D00844578 /* BillItem.swift */,
 				9C97A1322480E2AF00844578 /* ProjectItem.swift */,
 				9C570412248646F3003B3EC6 /* BillCategory.swift */,
+				9C6D11A02491D5B000329D61 /* CategoryAmount.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -399,7 +467,8 @@
 				9C97A0DC24809AD800844578 /* Sources */,
 				9C97A0DD24809AD800844578 /* Frameworks */,
 				9C97A0DE24809AD800844578 /* Resources */,
-				455DE72461A2324FDBC13A88 /* [CP] Embed Pods Frameworks */,
+				9C8F346E2497C07E00279B79 /* Embed Frameworks */,
+				095861EA3D4AD444737C300D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -470,7 +539,7 @@
 				};
 			};
 			buildConfigurationList = 9C97A0DB24809AD800844578 /* Build configuration list for PBXProject "JiZM" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 11.4";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -495,7 +564,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C934ED02480E68E00F4730A /* AccountCategory.plist in Resources */,
-				9C57041924875206003B3EC6 /* CategoryCollectionViewCell.xib in Resources */,
 				9C97A0F324809ADA00844578 /* LaunchScreen.storyboard in Resources */,
 				9C5704012484CC7E003B3EC6 /* BillCategory.plist in Resources */,
 				9C97A0F024809ADA00844578 /* Assets.xcassets in Resources */,
@@ -519,7 +587,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		455DE72461A2324FDBC13A88 /* [CP] Embed Pods Frameworks */ = {
+		095861EA3D4AD444737C300D /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -568,18 +636,27 @@
 				9C57040A248520D4003B3EC6 /* ProjectViewController.swift in Sources */,
 				9C97A0E424809AD800844578 /* AppDelegate.swift in Sources */,
 				9C97A1332480E2AF00844578 /* ProjectItem.swift in Sources */,
+				9C4A971024973BC20068A62F /* CategoryCollectionViewCell.swift in Sources */,
 				9C570408248520C8003B3EC6 /* AccountViewController.swift in Sources */,
+				9C4A971A2497B7AE0068A62F /* UIAlertController.swift in Sources */,
+				9C4A97162497A2DE0068A62F /* AccountDetailViewController.swift in Sources */,
+				9C4A971C2497B8FF0068A62F /* NewBudgetViewController.swift in Sources */,
 				9C5703F82484C0FA003B3EC6 /* NewBillViewController.swift in Sources */,
 				9C97A1302480E0BD00844578 /* AccountItem.swift in Sources */,
 				9C934EDE24813A3500F4730A /* ItmeView.swift in Sources */,
+				9C64FB6A24908ED800BD2925 /* DetailFormViewController.swift in Sources */,
 				9C934ED62480E81100F4730A /* MyLabel.swift in Sources */,
 				9C5703F524849F82003B3EC6 /* UIColorExtension.swift in Sources */,
+				9C64FB6E24908F1D00BD2925 /* RankViewController.swift in Sources */,
+				9C6D11A12491D5B000329D61 /* CategoryAmount.swift in Sources */,
 				9C5703FA2484C28C003B3EC6 /* MyButton.swift in Sources */,
 				9C57041124863A53003B3EC6 /* CategoryViewController.swift in Sources */,
 				9C97A1252480A12500844578 /* BudgetViewController.swift in Sources */,
-				9C57041824875206003B3EC6 /* CategoryCollectionViewCell.swift in Sources */,
+				9C64FB65248FAB4000BD2925 /* JZWayTableViewCell.swift in Sources */,
 				9CF789DB248205E0006423D9 /* ProjectTableViewCell.swift in Sources */,
 				9C5703F224849EE5003B3EC6 /* BillTableViewCell.swift in Sources */,
+				9C4B09FD2497CB9900C93210 /* EWDatePickerViewController.swift in Sources */,
+				9C4B0A0324984F5900C93210 /* NewAccountViewController.swift in Sources */,
 				9CF789DF24824734006423D9 /* Date.swift in Sources */,
 				9C97A0E624809AD800844578 /* SceneDelegate.swift in Sources */,
 				9C97A11E2480A0F100844578 /* BillViewController.swift in Sources */,
@@ -587,13 +664,20 @@
 				9C97A11C2480A0E300844578 /* FormViewController.swift in Sources */,
 				9C5703FC2484C2B0003B3EC6 /* MyTextField.swift in Sources */,
 				9C9B343E248CD3A200D67678 /* AmountView.swift in Sources */,
+				9CAC76162491070900B97893 /* RoundView.swift in Sources */,
 				9C5704052484D660003B3EC6 /* Plist.swift in Sources */,
 				9C97A12A2480A15300844578 /* MoreFuncViewController.swift in Sources */,
+				9CAC76142490CBDF00B97893 /* CategoryFormCollectionViewCell.swift in Sources */,
+				9C4B0A012497CBC300C93210 /* CommonHelper.swift in Sources */,
 				9C97A0EE24809AD800844578 /* JiZM.xcdatamodeld in Sources */,
 				9C570413248646F3003B3EC6 /* BillCategory.swift in Sources */,
+				9C64FB6824908D2E00BD2925 /* AllFormViewController.swift in Sources */,
 				9C97A1222480A11200844578 /* MineViewController.swift in Sources */,
 				9C934EDC2481372E00F4730A /* DetailView.swift in Sources */,
+				9C64FB6C24908EE800BD2925 /* CategoryFormViewController.swift in Sources */,
+				9C4A97182497A4190068A62F /* TransactionViewController.swift in Sources */,
 				9C934ED9248135E100F4730A /* DetailViewController.swift in Sources */,
+				9C4B09FF2497CBA600C93210 /* EWDataPickerPresentAnimated.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -695,6 +779,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -748,6 +833,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
@@ -759,6 +845,7 @@
 			baseConfigurationReference = D12242FB17D69F30F0CCAF01 /* Pods-JiZM.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5T93Z8F848;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -769,6 +856,7 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+					"@executable_path/../Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = MingLL.JiZM;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -782,12 +870,14 @@
 			baseConfigurationReference = 79A5B9A72498A364670FCAB1 /* Pods-JiZM.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5T93Z8F848;
 				INFOPLIST_FILE = JiZM/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+					"@executable_path/../Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = MingLL.JiZM;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -890,7 +980,7 @@
 				9C97A10C24809ADA00844578 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		9C97A10D24809ADA00844578 /* Build configuration list for PBXNativeTarget "JiZM" */ = {
 			isa = XCConfigurationList;
@@ -899,7 +989,7 @@
 				9C97A10F24809ADA00844578 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		9C97A11024809ADA00844578 /* Build configuration list for PBXNativeTarget "JiZMTests" */ = {
 			isa = XCConfigurationList;
@@ -908,7 +998,7 @@
 				9C97A11224809ADA00844578 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		9C97A11324809ADA00844578 /* Build configuration list for PBXNativeTarget "JiZMUITests" */ = {
 			isa = XCConfigurationList;
@@ -917,7 +1007,7 @@
 				9C97A11524809ADA00844578 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 

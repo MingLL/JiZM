@@ -88,11 +88,26 @@ class ProjectTableViewCell: UITableViewCell {
         self.iconView.image = UIImage(systemName: project.imageName)
         self.nameLabel.text = project.name
         self.timeLabel.text = Date.dateConvertString(date: project.beginDate, dateFormat: "yyyy/MM/dd") + "-" + Date.dateConvertString(date: project.endDate, dateFormat: "yyyy/MM/dd")
-        self.amountLabel.text = String(project.totalAmount - project.amount)
-        self.consumeAmountLabel.text = String(project.amount)
+        if project.amount < 0 {
+            self.consumeAmountLabel.text = String(abs(project.amount))
+            self.consumeAmountLabel.textColor = .green
+        } else {
+            self.consumeAmountLabel.text = String(project.amount)
+            self.consumeAmountLabel.textColor = .red
+
+        }
         
-        self.amountLabel.textColor = UIColor.green
-        self.consumeAmountLabel.textColor = UIColor.red
+        self.amountLabel.text = String(project.totalAmount - project.amount)
+        
+        if project.totalAmount - project.amount < 0 {
+            self.amountLabel.textColor = .red
+        } else if project.totalAmount * 0.75 < project.amount  {
+            self.amountLabel.textColor = UIColor(0xFF8C00)
+        } else {
+            self.amountLabel.textColor = UIColor.green
+        }
+      
+        
     }
     
 }

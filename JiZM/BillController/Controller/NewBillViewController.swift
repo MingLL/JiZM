@@ -29,6 +29,8 @@ class NewBillViewController: UIViewController {
     
     var project: ProjectItem?
     
+    var isWarning: Bool = false
+    
     
     init(date: Date) {
         self.currentDate = date
@@ -37,6 +39,7 @@ class NewBillViewController: UIViewController {
         self.view.backgroundColor = .white
         self.edgesForExtendedLayout = UIRectEdge.init(rawValue: 0)
     }
+    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -79,7 +82,7 @@ class NewBillViewController: UIViewController {
         self.categoryVC = CategoryViewController()
         self.addChild(categoryVC)
         self.view.addSubview(self.categoryVC.view)
-
+        
         self.categoryVC.view.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(80)
             make.left.right.equalToSuperview()
@@ -94,17 +97,35 @@ class NewBillViewController: UIViewController {
         } else {
             bill.name = self.nameInputLabel.text!
         }
+        bill.status = self.categoryVC.payButton.isSelected ? "支出" : "收入"
+        
         let price = self.priceInputLabel.text ?? "0.0"
         bill.price = Float(price) ?? 0.0
         bill.account = self.account
+        if bill.status == "支出" {
+            self.account.amount -= bill.price
+        } else {
+            self.account.amount += bill.price
+        }
+        AccountItem.updataAccount(accountItem: self.account)
+        
         if self.project != nil {
             bill.project = self.project
+            if bill.status == "支出" {
+                self.project!.amount += bill.price
+            } else {
+                self.project!.amount -= bill.price
+            }
+            ProjectItem.updateProject(projectItem: self.project!)
+            if self.project!.amount > self.project!.totalAmount * 0.75 {
+                self.isWarning = true
+            }
         }
         
         bill.category = self.categoryVC.categoryString
-        bill.date = self.currentDate ?? Date()
+        bill.date = self.currentDate!
+        
         bill.remark = self.remarkInputLabel.text
-        bill.status = self.categoryVC.payButton.isSelected ? "支出" : "收入"
         bill.shop = self.shopInputLabel.text ?? ""
         BillItem.saveBill(billItem: bill)
     }
@@ -169,11 +190,10 @@ class NewBillViewController: UIViewController {
         remarkInputLabel.insertText("备注信息:")
         
         
-        self.currentDate = Date()
-        
+
         dateButtion.setTitle(self.getCurrentDate(), for: .normal)
         timeButton.setTitle(self.getCurrentTime(), for: .normal)
-
+        
         dateButtion.setTitleColor(.red, for: .normal)
         timeButton.setTitleColor(.red, for: .normal)
         
@@ -249,39 +269,42 @@ class NewBillViewController: UIViewController {
     private func getCurrentTime() -> String {
         let dateformatter = DateFormatter()
         dateformatter.dateFormat = "HH:mm"
-        return dateformatter.string(from: self.currentDate ?? Date())
+        return dateformatter.string(from: Date())
     }
     
     private func getCurrentDate() -> String {
         let dateformatter = DateFormatter()
         dateformatter.dateFormat = "YYYY/MM/dd"
-        return dateformatter.string(from: self.currentDate ?? Date())
+        return dateformatter.string(from: self.currentDate!)
     }
     
     
     @objc func ClickButton() {
-         self.saveData()
-         let alart = UILabel()
-         alart.text = "保存成功"
-         alart.font = UIFont.systemFont(ofSize: 17)
-         alart.textAlignment = .center
-         alart.backgroundColor = .orange
-         alart.layer.cornerRadius = 5
-         
-         UIView.animate(withDuration: 1, animations: {
-             self.view.addSubview(alart)
-             alart.snp.makeConstraints { (make) in
-                 make.centerY.centerX.equalToSuperview()
-             }
-         }) { (b:Bool) in
-             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                 alart.removeFromSuperview()
-                 self.dismiss(animated: true, completion: nil)
-             }
-         }
-         
-         
-     }
+        self.saveData()
+        let alart = UILabel()
+        alart.text = "保存成功"
+        alart.font = UIFont.systemFont(ofSize: 20)
+        alart.textAlignment = .center
+        alart.adjustsFontSizeToFitWidth = true
+        alart.backgroundColor = .orange
+        alart.layer.cornerRadius = 5
+        
+        UIView.animate(withDuration: 1, animations: {
+            self.view.addSubview(alart)
+            alart.snp.makeConstraints { (make) in
+                make.centerY.centerX.equalToSuperview()
+            }
+        }) { (b:Bool) in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "Warningprompt"), object:self.isWarning)
+                self.isWarning = false
+                alart.removeFromSuperview()
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
+        
+        
+    }
     
     @objc func accountButtonClick() {
         let accountVC = AccountViewController()
@@ -306,7 +329,7 @@ class NewBillViewController: UIViewController {
             projectButton.setTitle(project.name, for: .normal)
         }
     }
-
+    
     @objc func cancelButtonClick() {
         self.dismiss(animated: true, completion: nil)
     }

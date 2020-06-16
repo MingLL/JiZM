@@ -13,5 +13,6 @@ target 'JiZM' do
 	pod 'SwiftyJSON', '~> 4.0'
 	pod 'FSCalendar'
 	pod 'Customkeyboard'
+	pod 'SwiftTTPageController'
 	pod 'AAInfographics', :git => 'https://github.com/AAChartModel/AAChartKit-Swift.git'
 end

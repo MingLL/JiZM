@@ -43,6 +43,7 @@ class MineViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.getAccountData()
         self.getBillData()
         self.creatViews()
@@ -54,12 +55,49 @@ class MineViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     override func viewDidAppear(_ animated: Bool) {
         self.getAccountData()
         self.getBillData()
-        
         self.tabelView.reloadData()
-        print("")
+        var payDic: Dictionary<Int, Float> = Dictionary()
+        var incomeDic: Dictionary<Int, Float> = Dictionary()
+        var payArray: [Float] = []
+        var incomeArray: [Float] = []
+        for i in 1...12 {
+            payDic[i] = 0.00
+            incomeDic[i] = 0.00
+        }
+        for bill in self.billItems {
+            let date = bill.date
+            let calendar = Calendar.current
+            let month = calendar.component(.month, from: date)
+            if bill.status == "支出" {
+                var temp =  payDic[month]!
+                temp += bill.price
+                payDic[month] = temp
+            } else {
+                var temp =  incomeDic[month]!
+                temp += bill.price
+                incomeDic[month] = temp
+            }
+        }
+        
+        for i in 1...12 {
+            let payValue = payDic[i]!
+            
+            let incomeValue = incomeDic[i]!
+            payArray.append(payValue)
+            incomeArray.append(incomeValue)
+        }
+        
+        self.chartView!.aa_onlyRefreshTheChartDataWithChartModelSeries([AASeriesElement()
+            .name("支出")
+            .data(payArray),
+                                                                        AASeriesElement()
+                                                                            .name("收入")
+                                                                            .data(incomeArray)])
     }
     
     func creatViews() {
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .done, target: self, action: #selector(MineViewController.rightBtnClick))
+        
         self.amountView = AmountView(frame: .zero)
         self.chartView = AAChartView(frame: .zero)
         self.tabelView = UITableView.init(frame: .zero)
@@ -97,8 +135,8 @@ class MineViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         var payArray: [Float] = []
         var incomeArray: [Float] = []
         for i in 1...12 {
-            payDic[i] = 0.0
-            incomeDic[i] = 0.0
+            payDic[i] = 0.00
+            incomeDic[i] = 0.00
         }
         for bill in self.billItems {
             let date = bill.date
@@ -116,10 +154,11 @@ class MineViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         }
         
         for i in 1...12 {
-            let payValue = payDic[i]
-            let incomeValue = incomeDic[i]
-            payArray.append(payValue!)
-            incomeArray.append(incomeValue!)
+            let payValue = payDic[i]!
+            
+            let incomeValue = incomeDic[i]!
+            payArray.append(payValue)
+            incomeArray.append(incomeValue)
         }
         
         let chartModel = AAChartModel()
@@ -134,11 +173,11 @@ class MineViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             .series([
                 AASeriesElement()
                     .name("支出")
-                    .data(payArray).toDic()!,
+                    .data(payArray),
                 AASeriesElement()
                     .name("收入")
                     .data(incomeArray)
-                    .toDic()!])
+            ])
         chartView.aa_drawChartWithChartModel(chartModel)
     }
     
@@ -148,7 +187,7 @@ class MineViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     
     //返回每个分组的数量
     func numberOfSections(in tableView: UITableView) -> Int {
-        return accountCategory.count
+        return accountItems.count
     }
     
     //返回每个分组内数量
@@ -174,9 +213,10 @@ class MineViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         }
         categoryLabel.text = accountCategory[section]
         var num:Float = 0.0
-        let accounts = accountItems[accountCategory[section]]!
-        for account in accounts {
-            num += account.amount
+        if let accounts = accountItems[accountCategory[section]] {
+            for account in accounts {
+                num += account.amount
+            }
         }
         amountLabel.text = String(num)
         return headView
@@ -199,6 +239,9 @@ class MineViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             let account = accountValue[indexPath.row]
             cell?.imageView?.image = UIImage(systemName: account.imageName)
             cell?.textLabel?.text = account.name
+            if account.amount < 0 {
+                cell?.detailTextLabel?.textColor = .red
+            }
             cell?.detailTextLabel?.text = String("¥\(account.amount)")
         }
         return cell!
@@ -209,9 +252,23 @@ class MineViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         let accountKey = accountCategory[indexPath.section]
         if let accountValue = accountItems[accountKey] {
             let account = accountValue[indexPath.row]
-            let detailVC = DetailViewController(account: account)
+            let detailVC = AccountDetailViewController(account: account)
             detailVC.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(detailVC, animated: true)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCell.EditingStyle.delete{
+            //移除选定的数据
+            let key =  accountCategory[indexPath.section]
+            var keyValue = accountItems[key]!
+            AccountItem.deleteAccount(accountItem: keyValue[indexPath.row])
+            keyValue.remove(at: indexPath.row)
+            //增加删除动画
+            accountItems[key] = keyValue
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            
         }
     }
     
@@ -224,52 +281,20 @@ class MineViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             if account.isShowTotalAmount {
                 allAccountAmount += account.amount
             }
-            switch account.category {
-            case "现金":
-                if self.accountItems.keys.contains("现金") {
-                    var keysValue = accountItems["现金"]!
-                    keysValue.append(account)
-                } else {
-                    self.accountItems["现金"] = [account]
-                }
-            case "银行":
-                if self.accountItems.keys.contains("银行") {
-                    var keysValue = accountItems["银行"]!
-                    keysValue.append(account)
-                } else {
-                    self.accountItems["银行"] = [account]
-                }
-            case "信用卡":
-                if self.accountItems.keys.contains("信用卡") {
-                    var keysValue = accountItems["信用卡"]!
-                    keysValue.append(account)
-                } else {
-                    self.accountItems["信用卡"] = [account]
-                }
-            case "线上支付":
-                if self.accountItems.keys.contains("线上支付") {
-                    var keysValue = accountItems["线上支付"]!
-                    keysValue.append(account)
-                } else {
-                    self.accountItems["线上支付"] = [account]
-                }
-            case "其他":
-                if self.accountItems.keys.contains("其他") {
-                    var keysValue = accountItems["其他"]!
-                    keysValue.append(account)
-                } else {
-                    self.accountItems["其他"] = [account]
-                }
-            default:
-                break
+            if var keyValue = self.accountItems[account.category] {
+                keyValue.append(account)
+                self.accountItems[account.category] = keyValue
+                
+            } else {
+                self.accountItems[account.category] = [account]
+                self.accountCategory.append(account.category)
             }
         }
-        for key in self.accountItems.keys {
-            self.accountCategory.append(key)
-        }
+        print("")
     }
     
     func getBillData() {
+        self.billItems.removeAll()
         for key in accountItems.keys {
             let keyValue = accountItems[key]!
             for value in keyValue {
@@ -282,6 +307,12 @@ class MineViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             }
         }
     }
+    
+    @objc func rightBtnClick() {
+        let newAccountVC = NewAccountViewController()
+        self.navigationController?.pushViewController(newAccountVC, animated: true)
+    }
+    
     
     
     

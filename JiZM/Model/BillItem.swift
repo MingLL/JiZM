@@ -106,4 +106,21 @@ class BillItem {
         }
         return billItems
     }
+    
+    static func deleteBill(billItem: BillItem) {
+        let bill: Bill
+        let app = UIApplication.shared.delegate as! AppDelegate
+        let context = app.persistentContainer.viewContext
+        let request = NSFetchRequest<Bill>.init(entityName: "Bill")
+        let predicate = NSPredicate(format: "name = %@", billItem.name)
+        request.predicate = predicate
+        do {
+            let fetchedObjects = try context.fetch(request)
+            bill = fetchedObjects.first!
+            context.delete(bill)
+            try context.save()
+        } catch {
+            print("删除错误")
+        }
+    }
 }

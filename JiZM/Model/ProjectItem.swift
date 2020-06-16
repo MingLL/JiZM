@@ -118,4 +118,50 @@ class ProjectItem {
         project.status = projectItem.status
         app.saveContext()
     }
+    
+    static func updateProject(projectItem: ProjectItem) {
+        if projectItem != nil{
+            let project: Project?
+            let app = UIApplication.shared.delegate as! AppDelegate
+            let context = app.persistentContainer.viewContext
+            
+            let  request = NSFetchRequest<Project>.init(entityName: "Project")
+            let predicate = NSPredicate(format: "name = %@", projectItem.name)
+            request.predicate = predicate
+            
+            do {
+                let fetchedObjects = try context.fetch(request)
+                project = fetchedObjects.first ?? nil
+                project?.name = projectItem.name
+                project?.amount = projectItem.amount
+                project?.imageName = projectItem.imageName
+                project?.beginDate = projectItem.beginDate
+                project?.endDate = projectItem.endDate
+                project?.totalAmount = projectItem.totalAmount
+                project?.status = projectItem.status
+                app.saveContext()
+            } catch {
+                fatalError("查询错误：\(error)")
+            }
+        }
+    }
+    
+    static func deleteProject(projectItem: ProjectItem) {
+        let project: Project
+        let app = UIApplication.shared.delegate as! AppDelegate
+        let context = app.persistentContainer.viewContext
+        
+        let  request = NSFetchRequest<Project>.init(entityName: "Project")
+        let predicate = NSPredicate(format: "name = %@", projectItem.name)
+        request.predicate = predicate
+        do {
+            let fetchedObjects = try context.fetch(request)
+            project = fetchedObjects.first!
+            context.delete(project)
+            try context.save()
+        } catch {
+            print("删除错误")
+        }
+        
+    }
 }

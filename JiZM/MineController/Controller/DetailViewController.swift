@@ -30,8 +30,6 @@ class DetailViewController: UIViewController {
         self.detailView = DetailView(frame: .zero)
         super.init(nibName: nil, bundle: nil)
         self.edgesForExtendedLayout = UIRectEdge.init(rawValue: 0)
-        
-        
     }
     
     required init?(coder: NSCoder) {
